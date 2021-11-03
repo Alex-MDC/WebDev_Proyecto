@@ -18,5 +18,9 @@
   .logo {
       display: flex;
      }
+     .btn-login{
+         display: flex;
+         margin: 50px;
+     }
   
   
