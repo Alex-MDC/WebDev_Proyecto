@@ -22,5 +22,11 @@
          display: flex;
          margin: 50px;
      }
-  
+     body{
+         background-color: rgba(14, 31, 107, 0.644);
+     }
+  .game-section{
+      background-color: dodgerblue;
+      
+  }
   

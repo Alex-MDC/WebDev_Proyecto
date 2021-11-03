@@ -30,4 +30,9 @@ app.get("/:requestID", function (req,res) {
 app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
   });
+
+  //funcion para tener en home los top games
+  function populateTopGames(){
+
+  }
   
