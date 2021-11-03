@@ -2,12 +2,21 @@
     box-sizing: border-box;
   }
 
+  
   .home-banner {
       display: flex;
-      justify-content: space-evenly;
+      flex-flow: column wrap;
+      justify-content: space-around;
+      height: 150px;
       align-items: center;
       justify-content: center;
       text-align: center;
       font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
       
-  }
+    }
+
+  .logo {
+      display: flex;
+     }
+  
+  
