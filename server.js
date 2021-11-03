@@ -18,6 +18,13 @@ app.get("/", function(req, res) {
     res.sendFile(path.join(__dirname, "home.html"));
   });
 
+  //DYNAMIC ROUTE--------------------------------DYNAMIC ROUTE
+app.get("/:requestID", function (req,res) {
+    if(req.params.requestID == "login"){
+        res.sendFile(path.join(__dirname, "login.html"));
+    }
+
+})
    // Starts the server to begin listening
 // =============================================================
 app.listen(PORT, function() {
