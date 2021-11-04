@@ -22,6 +22,8 @@ app.get("/", function(req, res) {
 app.get("/:requestID", function (req,res) {
     if(req.params.requestID == "login"){
         res.sendFile(path.join(__dirname, "login.html"));
+    }else if(req.params.requestID == "signup"){
+      res.sendFile(path.join(__dirname, "signup.html"));
     }
 
 })
