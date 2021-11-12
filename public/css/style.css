@@ -20,7 +20,8 @@
      }
      .btn-login{
          display: flex;
-         margin: 50px;
+         margin: 2em;
+         flex-flow: row;
      }
      body{
          background-color: rgba(14, 31, 107, 0.644);
@@ -31,5 +32,48 @@
   }
   
   .login-div{
-      display: inline-block;
+      display: flex;
+      flex-flow: row-reverse;
+      justify-content: space-between;
+      
+  }
+
+  .navbar{
+    display: flex;
+    flex-flow: row-reverse;
+    justify-content: space-between;
+    margin: 0 1em 0.5em 0;
+  }
+  
+  .menu {
+    visibility: visible;
+    display: flex;
+    justify-content: space-around;
+    color: white;
+    margin: 1em 0 1em 0;
+    list-style-type: none;  
+    flex-grow: 0.2;
+  }
+
+  nav{
+    background-color: rgb(17, 17, 17);
+    margin-top: 1em;
+  }
+
+  a:active{
+      color: white;
+  }
+
+  a:visited{
+      color: dimgray;
+  }
+
+  a:hover{
+      color:tomato;
+  }
+
+  header{
+      display: flex;
+      justify-items: center; 
+      justify-content: center;    
   }
