@@ -1,0 +1,74 @@
+* {
+    box-sizing: border-box;
+  }
+
+  
+  .home-banner {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-around;
+    height: 150px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    
+  }
+  .logo {
+    display: flex;
+   }
+   .btn-login{
+       display: flex;
+       margin: 50px;
+   }
+   body{
+       background-color: rgba(14, 31, 107, 0.644);
+   }
+.game-data{
+    background-color: dodgerblue;
+  
+}
+  
+  .login-div{
+      display: inline-block;
+  }
+.game-name{
+    background-color: rgb(255, 30, 30);
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 50px;
+    padding-left: 1em;
+}
+
+.navbar{
+  display: flex;
+  flex-flow: row-reverse;
+  justify-content: space-between;
+  margin: 0 1em 0.5em 0;
+}
+
+.menu {
+  visibility: visible;
+  display: flex;
+  justify-content: space-around;
+  color: white;
+  margin: 1em 0 1em 0;
+  list-style-type: none;  
+  flex-grow: 0.2;
+}
+
+nav{
+  background-color: rgb(17, 17, 17);
+  margin-top: 1em;
+}
+
+a:active{
+    color: white;
+}
+
+a:visited{
+    color: dimgray;
+}
+
+a:hover{
+    color:tomato;
+}

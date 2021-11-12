@@ -1,45 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
 <head> 
     <meta charset="UTF-8">
     <title>My VideoGame List</title>
     <script src="https://code.jquery.com/jquery.js"></script>
-    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/userpage.css">
     
 </head>
 <body>
-    
-
-
 <div class="home-banner">
     <div class="logo"><img src="/images/Controller_image.png"></div>
     <header> <h1>My VideoGame List </h1>
     </header>
-    <div>
-        <p class="login-div">
-        <a href="/login"> <button class="btn-login"> Log In </button> </a> 
-        <a href="/signup"> <button class="btn-login"> Sign Up </button> </a> 
+    <div class="login-div">
+        <p>
+        <a href="/login"> <button class="btn-login"> Log Out </button> </a> 
         </p>
     </div>
-
 
 </div>
 
 <nav>
     <div class="navbar">
         <ul class="menu">
-            <li><a href="/userpage"> User Page </a> </li>
+            <li><a href="/">  Home <br> </a>  </li>
         </ul>
     </div>
 </nav>
-<!-- seccion con los juegos mas destacados de lapagina
+
+<!-- seccion con la info del usuario
+    apoyarse del API-->
+    <div class="user-info">
+        <p>Username
+        </p>
+    </div>
+<!-- seccion con los juegos favoritos del usuario
     apoyarse del API-->
 <div class="game-section">
-    <h1>Top rated games
+    <h1>Favorite Games
     </h1>
     <!-- aqui se hace el appending del api-->
+    <p>
+        <a href="/gameinfo">  Game Info  </a> 
+    </p>
 
 </div>
 

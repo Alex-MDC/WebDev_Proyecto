@@ -24,9 +24,15 @@ app.get("/:requestID", function (req,res) {
         res.sendFile(path.join(__dirname, "login.html"));
     }else if(req.params.requestID == "signup"){
       res.sendFile(path.join(__dirname, "signup.html"));
+    }else if(req.params.requestID == "userpage"){
+      res.sendFile(path.join(__dirname, "userpage.html"));
+    }else if(req.params.requestID == "gameinfo"){
+      res.sendFile(path.join(__dirname, "gameinfo.html"));
     }
 
 })
+
+
    // Starts the server to begin listening
 // =============================================================
 app.listen(PORT, function() {
@@ -36,5 +42,5 @@ app.listen(PORT, function() {
   //funcion para tener en home los top games
   function populateTopGames(){
 
-  }
+  } 
   
