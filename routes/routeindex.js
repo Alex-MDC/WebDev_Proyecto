@@ -10,8 +10,8 @@ router.get('/', async function(req,res){
       method: 'POST',
       url: 'https://api.igdb.com/v4/games',
       headers: {
-        'Client-ID': '8xmlvh16op42w7i239g2aimpfxj0av',
-        Authorization: 'Bearer i4kb6g0xsmkvicxrwnhg71xvxkuv4m'
+        'Client-ID': 'xxx',
+        Authorization: 'Bearer xxx'
       },
       data: 'f name,first_release_date,release_dates.date,release_dates.human,rating, rating_count;\n\nwhere rating >= 90 & first_release_date >=1514768461 & rating_count > 100 & first_release_date <= 1609462861;\nsort first_release_date desc;\nlimit 15;\n\n'
     };
