@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head> 
+    <meta charset="UTF-8">
+    <title>My VideoGame List</title>
+    <!--
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="/css/style.css">    
+    -->
+    <!--
+    <link rel="stylesheet" type="text/css" href="../public/css/style.css">
+    -->
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+
+   
+</head>
+<body>
+    
+
+
+<div class="home-banner">
+    <!--
+    <div class="logo"><img src="../public/images/Controller_image.png"></div>
+-->
+    <div class="logo"><img src="images/Controller_image.png"></div>
+
+    <header> <h1>My VideoGame List </h1>
+    </header>
+    <div>
+        <p class="login-div">
+        <a href="/login"> <button class="btn-login"> Log In </button> </a> 
+        <a href="/signup"> <button class="btn-login"> Sign Up </button> </a> 
+        </p>
+    </div>
+
+
+</div>
+
+<nav>
+    <div class="navbar">
+        <ul class="menu">
+            <li><a href="/userpage"> User Page </a> </li>
+        </ul>
+    </div>
+</nav>
+<!-- seccion con los juegos mas destacados de lapagina
+    apoyarse del API-->
+<div class="game-section" id="top-rated">
+    <h1>Top rated games
+    </h1>
+    <% for (var i= 0;i < resultsAPI.length; i++) { %>
+        <tr>
+          <!-- -->
+          <div class="top-rated-game">
+            <h2 class="Game-name"> <%= resultsAPI[i].name %> </h2>
+            <p class="Game-rating">Rating: <%= (resultsAPI[i].rating).toFixed(2) %>   </p>
+        
+          </div>
+          <!-- -->
+      </tr>
+    
+      <% } %>
+    <!-- aqui se hace el appending del api-->
+
+</div>
+ <!--
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="server.js"></script>
+-->
+<footer class ="page-footer">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  
+    
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    
+</body>
+</html>
