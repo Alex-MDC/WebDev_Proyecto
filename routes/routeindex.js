@@ -10,8 +10,8 @@ router.get('/', async function(req,res){
       method: 'POST',
       url: 'https://api.igdb.com/v4/games',
       headers: {
-        'Client-ID': '8xmlvh16op42w7i239g2aimpfxj0av',
-        Authorization: 'Bearer i4kb6g0xsmkvicxrwnhg71xvxkuv4m'
+        'Client-ID': 'xxx',
+        Authorization: 'Bearer xxx'
       },
       data: 'f name,first_release_date,release_dates.date,release_dates.human,rating, rating_count;\n\nwhere rating >= 90 & first_release_date >=1514768461 & rating_count > 100 & first_release_date <= 1609462861;\nsort first_release_date desc;\nlimit 15;\n\n'
     };
@@ -22,7 +22,11 @@ router.get('/', async function(req,res){
     // con el for el array dice undefined
     
     
-    var resultsImages =[];
+    //var resultsImages =[];
+    var resultsImages
+    var urlArray=[];
+    var rawCoverURL
+    var processedCoverURL
    for(var i=0; i< resultsAPI.length; i++) {
     const queryImages = {
       method: 'POST',
@@ -34,7 +38,16 @@ router.get('/', async function(req,res){
       data: `f *; where game = ${resultsAPI[i].id};` 
       
     };
-    resultsImages.push((await axios.request(queryImages)).data) 
+    //resultsImages.push((await axios.request(queryImages)).data) 
+    //
+    resultsImages = (await axios.request(queryImages)).data
+    rawCoverURL = resultsImages[0].url
+    processedCoverURL = rawCoverURL.replace("t_thumb","t_cover_big");
+   // urlArray.push(resultsImages[0].url)
+   urlArray.push(processedCoverURL)
+    //
+    console.log(urlArray[i])
+
   }
   
  
@@ -47,8 +60,8 @@ router.get('/', async function(req,res){
     method: 'POST',
     url: 'https://api.igdb.com/v4/covers',
     headers: {
-      'Client-ID': '8xmlvh16op42w7i239g2aimpfxj0av',
-      Authorization: 'Bearer i4kb6g0xsmkvicxrwnhg71xvxkuv4m'
+      'Client-ID': 'xxx',
+      Authorization: 'Bearer xxx'
     },
     data: `f *; where game = ${resultsAPI[0].id};` 
     
@@ -57,9 +70,11 @@ router.get('/', async function(req,res){
   */
   // --------
     
-    res.render('home', {resultsAPI, resultsImages});
+  //  res.render('home', {resultsAPI, resultsImages});
+    res.render('home', {resultsAPI, urlArray});
     console.log(`Image url: ${resultsImages[0].url}`)
-    console.log(resultsImages[0])
+    //console.log(resultsImages[0])
+    console.log(urlArray)
   });
 
 //
@@ -69,8 +84,8 @@ function getImageURL(gameID) {
     method: 'POST',
     url: 'https://api.igdb.com/v4/covers',
     headers: {
-      'Client-ID': '8xmlvh16op42w7i239g2aimpfxj0av',
-      Authorization: 'Bearer i4kb6g0xsmkvicxrwnhg71xvxkuv4m'
+      'Client-ID': 'xxx',
+      Authorization: 'Bearer xxx'
     },
     data: `f *; where game = ${gameID};` 
     
