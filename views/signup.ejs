@@ -3,13 +3,13 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>My VideoGame List - Login</title>
+    <title>My VideoGame List - SignUp</title>
   
     <link rel="stylesheet" type="text/css" href="css/login.css">
     
 </head>
 
-<body>  
+ 
     <!--Uso del mismo encabezado para la pantalla de log in, solo se adiere el segmento de log in-->
     <div class="home-banner">
         <div class="logo"><img src="images/Controller_image.png"></div>
@@ -21,27 +21,20 @@
     
     
     </div>
-    <!-- seccion con los juegos mas destacados de lapagina
-        apoyarse del API-->
-    <div class="game-section">
-        <p>Top rated games
-        </p>
-        <!-- aqui se hace el appending del api-->
-    
-    </div>
     
     <!-- Aqui se encuentra los fragementos que son unicos del LOG IN-->
-    <div class = "container">
+    <body> 
+     <div class = "container">
         <div class = "log-in-form">
 
             <h1 class = "titulo-log-in">Sign Up</h1>
-            <form action="/login" method="POST">
+            <form action="/signup" method="POST">
                 
                 <div >
                     <span class="input-item">
                         <i class="fa fa-user-circle-o" aria-hidden="true"></i>
                       </span>
-                    <input class = "form-input" type="text" name="username"
+                    <input class = "form-input" type="text" name="email"
                         placeholder="email">
                 <br>
 
@@ -51,11 +44,9 @@
                     <input  class = "form-input" type="password" name="password"
                         placeholder="password">
                 </div>
-
+                <button class = "login-button" type="submit"> Submit & signup</button>
             </form>  
-            <div >
-                <button class = "login-button" >Log In </button>
-            </div> 
+        </body>
 
 
             <div >
@@ -77,6 +68,6 @@
       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
         
 
-</body>
+
 </html>
 
