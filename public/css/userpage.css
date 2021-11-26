@@ -21,6 +21,10 @@
        display: flex;
        margin: 50px;
    }
+   .btn-logoff{
+    display: flex;
+    margin: 50px;
+}
    body{
        background-color: rgba(14, 31, 107, 0.644);
    }

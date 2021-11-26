@@ -3,6 +3,8 @@ const path = require('path');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 
+const cookieParser = require('cookie-parser');
+
 const app = express();
 
 // connection to db
@@ -26,13 +28,13 @@ app.set('view engine', 'ejs');
 app.use(morgan('dev'));
 app.use(express.urlencoded({extended:false}));
 app.use(express.static('public'))
+//
+//es necesario usar el encoded en true?
+// app.use(express.urlencoded({extended:true}));
+app.use(express.json());
+app.use(cookieParser());
 
 //
-/*
-app.use(express.static(__dirname+'/public'))
-//app.set('/views',path.join(__dirname,'/views'))
-app.use('/images', express.static('images'));
-*/
 // routes
 app.use('/', indexRoutes);
 
