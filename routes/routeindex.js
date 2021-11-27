@@ -30,7 +30,7 @@ router.get('/',verify, async function(req,res){
         'Client-ID': clientIDkey,
         Authorization: bearerKey
       },
-      data: 'f name,first_release_date,release_dates.date,release_dates.human,rating, rating_count;\n\nwhere rating >= 90 & first_release_date >=1514768461 & rating_count > 100 & first_release_date <= 1609462861;\nsort first_release_date desc;\nlimit 15;\n\n'
+      data: 'f name,first_release_date,release_dates.date,release_dates.human,rating, rating_count;\n\nwhere rating >= 90 & first_release_date >=1514768461 & rating_count > 100 & first_release_date <= 1609462861;\nsort first_release_date desc;\nlimit 10;\n\n'
     };
     var resultsAPI
     resultsAPI = (await axios.request(queryGames)).data
@@ -119,7 +119,7 @@ router.get('/',verify, async function(req,res){
         'Client-ID': clientIDkey,
         Authorization: bearerKey
       },
-      data: `f *;\nwhere name ~ *"${query}"* & version_parent = null & cover != null;\nsort release_dates.date desc;\nlimit 15;`
+      data: `f *;\nwhere name ~ *"${query}"* & version_parent = null & cover != null;\nsort release_dates.date desc;\nlimit 10;`
     };
     var resultsAPI
     resultsAPI
@@ -168,6 +168,9 @@ router.get('/',verify, async function(req,res){
     res.render('findgames', {query,resultsAPI,urlArray,userName});
   })
   
+ //make the way for users to add to game to corresponding array of gameID
+
+
 //dynamic routes were causing many bugs
 
   //
