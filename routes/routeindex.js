@@ -15,12 +15,13 @@ router.get('/logout', async function(req,res) {
   res.clearCookie("token")
   res.redirect("/")
   });
-
-router.get('/',verify, async function(req,res){
-//TURN THE VALUES INTO XXX BEFORE UPLOADING
+  //TURN THE VALUES INTO XXX BEFORE UPLOADING----------------------
 var clientIDkey = "xxx"
 var bearerKey = "Bearer xxx"
-//!!!!!!!!!
+//!!!!!!!!!--------------------------------------------------------
+
+
+router.get('/',verify, async function(req,res){
 
     const queryGames = {
       method: 'POST',
@@ -96,6 +97,77 @@ var bearerKey = "Bearer xxx"
   router.get("/gameinfo",verify, async  (req,res) => {
     res.render('gameinfo');
   })
+  router.get("/findgames",verify, async  (req,res) => {
+    var query
+    //res.render('findgames', {query});
+    var resultsAPI =0
+    var urlArray=[]
+    var userName = req.userId
+    res.render('findgames', {query,resultsAPI,urlArray,userName});
+  })
+
+  router.post("/searchGames",verify, async  (req,res) => {
+    var query
+    //hacer queries del API
+    //ver como pasar la info del query al refresh de la paginia
+    query = req.body.search
+    //api stuff
+    const searchQuery = {
+      method: 'POST',
+      url: 'https://api.igdb.com/v4/games',
+      headers: {
+        'Client-ID': clientIDkey,
+        Authorization: bearerKey
+      },
+      data: `f *;\nwhere name ~ *"${query}"* & version_parent = null & cover != null;\nsort release_dates.date desc;\nlimit 15;`
+    };
+    var resultsAPI
+    resultsAPI
+    resultsAPI = (await axios.request(searchQuery)).data
+    console.log(`Api game 1: ${resultsAPI[0].name}` )
+    console.log(`Api game 1r rating: ${resultsAPI[0].rating}` )
+    //now we get images from the API
+    var resultsImages
+    var urlArray=[];
+    var rawCoverURL
+    var processedCoverURL
+    for(var i=0; i< resultsAPI.length; i++) {
+      const queryImages = {
+        method: 'POST',
+        url: 'https://api.igdb.com/v4/covers',
+        headers: {
+          'Client-ID': clientIDkey,
+          Authorization: bearerKey
+        },
+        data: `f *; where game = ${resultsAPI[i].id} & url != null;` 
+        
+      };
+      //resultsImages.push((await axios.request(queryImages)).data) 
+      //
+      console.log(`found game: ${resultsAPI[i].name}` )
+
+      resultsImages = (await axios.request(queryImages)).data
+     // console.log(`found game url: ${resultsImages[0].url}` )
+      if (typeof(resultsImages[0].url) === 'undefined'){
+        console.log("reassigning undefined url")
+        resultsImages[0].url = "https://i.redd.it/ldbo7yn202m21.jpg"
+
+        console.log(resultsImages[0].url)
+      }
+      rawCoverURL = resultsImages[0].url
+      console.log(rawCoverURL)
+      processedCoverURL = rawCoverURL.replace("t_thumb","t_cover_big");
+     // urlArray.push(resultsImages[0].url)
+     urlArray.push(processedCoverURL)
+  
+    }
+    //
+    var userName = req.userId
+
+    console.log(`Query: ${query}`)
+    res.render('findgames', {query,resultsAPI,urlArray,userName});
+  })
+  
 //dynamic routes were causing many bugs
 
   //
@@ -138,7 +210,9 @@ var bearerKey = "Bearer xxx"
    // Si la contraseña es correcta generamos un JWT
      if (valid) {
    
-       const token = jwt.sign({id:user.email, permission: true}, SECRET, {expiresIn: "2m"})
+      //en expires in pones la duracion de una sesiion 
+      // m = minutos h = horas
+       const token = jwt.sign({id:user.email, permission: true}, SECRET, {expiresIn: "45m"})
        console.log(token)
        res.cookie("token", token, {httpOnly:true})
        console.log(`User ${user.email} has logged in`)
@@ -156,6 +230,8 @@ var bearerKey = "Bearer xxx"
     console.log(error)
   }
   });
+  //
+
   //
   
 
