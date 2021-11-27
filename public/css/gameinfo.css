@@ -66,9 +66,16 @@ a:active{
 }
 
 a:visited{
-    color: dimgray;
+    color: rgb(155, 151, 151);
 }
 
 a:hover{
-    color:tomato;
+    color:rgb(40, 59, 226);
+}
+
+.game-section {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content:space-evenly;
+  gap: 80px 80px;
 }

@@ -1,53 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
+<%- include ("./templates/_header") %>
 
-
-<head> 
-    <meta charset="UTF-8">
-    <title>My VideoGame List</title>
-    <!--
-    <script src="https://code.jquery.com/jquery.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="/css/style.css">    
-    -->
-    <!--
-    <link rel="stylesheet" type="text/css" href="../public/css/style.css">
-    -->
-    <link href="css/style.css" rel="stylesheet" type="text/css">
-
-   
-</head>
-<body>
-    
-
-
-<div class="home-banner">
-    <!--
-    <div class="logo"><img src="../public/images/Controller_image.png"></div>
--->
-    <div class="logo"><img src="images/Controller_image.png"></div>
-
-    <header> <h1>My VideoGame List </h1>
-    </header>
-    <div>
-        <p class="login-div">
-        <a href="/login"> <button class="btn-login"> Log In </button> </a> 
-        <a href="/signup"> <button class="btn-login"> Sign Up </button> </a> 
-        <a href="/logout"> <button class="btn-login"> Log Out </button> </a> 
-        </p>
-    </div>
-
-
-</div>
-
-<nav>
-    <div class="navbar">
-        <ul class="menu">
-            <li><a href="/userpage"> User Page </a> </li>
-            <li>Welcome, <%= userName %> </li>
-        </ul>
-    </div>
-</nav>
+<!-- header goes on top-->
 <!-- seccion con los juegos mas destacados de lapagina
     apoyarse del API-->
     

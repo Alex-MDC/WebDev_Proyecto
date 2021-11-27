@@ -26,7 +26,6 @@
      }
      .btn-login{
          display: flex;
-         margin: 2em;
          flex-flow: row;
      }
      body{
@@ -46,7 +45,7 @@
 
   .navbar{
     display: flex;
-    flex-flow: row-reverse;
+    flex-flow: row;
     justify-content: space-between;
     margin: 0 1em 0.5em 0;
   }
@@ -71,11 +70,11 @@
   }
 
   a:visited{
-      color: dimgray;
+      color: rgb(143, 143, 143);
   }
 
   a:hover{
-      color:tomato;
+      color:rgb(41, 74, 224);
   }
 
   header{

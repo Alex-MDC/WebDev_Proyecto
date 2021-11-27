@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head> 
+    <meta charset="UTF-8">
+    <title>My VideoGame List</title>
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+
+   
+</head>
+<body>
+    
+
+
+<div class="home-banner">
+    <!--
+    <div class="logo"><img src="../public/images/Controller_image.png"></div>
+-->
+    <div class="logo"><img src="images/Controller_image.png"></div>
+
+    <header> <h1>My VideoGame List </h1>
+    </header>
+    <div hidden> 
+        <p class="login-div">
+        <a href="/login"> <button class="btn-login"> Log In </button> </a> 
+        <a href="/signup"> <button class="btn-login"> Sign Up </button> </a> 
+        <a href="/logout"> <button class="btn-login"> Log Out </button> </a> 
+        </p>
+    </div>
+
+
+</div>
+
+<nav>
+    <div class="navbar">
+        <ul class="menu">
+            <li>Welcome, <%= userName %> </li>
+            <li><a href="/findgames"> Find games </a> </li>
+            <li><a href="/userpage"> User Page </a> </li>
+            <li> <a href="/login"> <button class="btn-login"> Log In </button> </a> </li>
+            <li> <a href="/signup"> <button class="btn-login"> Sign Up </button> </a> </li>
+            <li> <a href="/logout"> <button class="btn-login"> Log Out </button> </a> </li>
+        </ul>
+    </div>
+</nav>
