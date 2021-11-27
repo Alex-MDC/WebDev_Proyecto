@@ -111,6 +111,7 @@ var bearerKey = "Bearer i4kb6g0xsmkvicxrwnhg71xvxkuv4m"
       res.redirect('/login')
     }
     else{
+      /*SOLO INVENTE EL NUMERO DE ERROR, NI IDEA SI ESE SEA */
       return res.status(400).send("The user exist")
     }
     
