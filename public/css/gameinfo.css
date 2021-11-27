@@ -41,7 +41,7 @@
 
 .navbar{
   display: flex;
-  flex-flow: row-reverse;
+  flex-flow: row;
   justify-content: space-between;
   margin: 0 1em 0.5em 0;
 }

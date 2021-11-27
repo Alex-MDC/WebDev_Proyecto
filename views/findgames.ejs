@@ -23,6 +23,7 @@
 <nav>
     <div class="navbar">
         <ul class="menu">
+            <li>What are you looking for, <%= userName %> ? </li>
             <li> <a href="/userpage">  Profile <br>  </a>  </li>
             <li> <a href="/">  Home <br> </a>  </li>
         </ul>
@@ -47,6 +48,7 @@
           <!-- -->
           <div class="top-rated-game">
             <h2 class="Game-name"> <%= resultsAPI[i].name %> </h2>
+            <h3 class="Game-ID"> ID: <%= resultsAPI[i].id %> </h2>
             
             <img class = "Game-image" src= <%= urlArray[i] %>  >
           </div>
@@ -54,7 +56,7 @@
       </tr>
     
       <% } %>
-    <!-- aqui se hace el appending del api-->
+    <!-- en que parte se pondria la funcinoalidad del boton?-->
 
 </div>
     
