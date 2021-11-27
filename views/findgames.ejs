@@ -47,8 +47,7 @@
           <!-- -->
           <div class="top-rated-game">
             <h2 class="Game-name"> <%= resultsAPI[i].name %> </h2>
-            
-            <img class = "Game-image" src= <%= urlArray[i] %>  >
+            <a href="/gameinfo/<%= resultsAPI[i].id%>"> <img class = "Game-image" src= <%= urlArray[i] %>  > </a>
           </div>
           <!-- -->
       </tr>

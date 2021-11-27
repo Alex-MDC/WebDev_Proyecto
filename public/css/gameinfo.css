@@ -2,6 +2,21 @@
     box-sizing: border-box;
   }
 
+  .container{
+    display: flex;
+    flex-flow: row;
+    background-color: dodgerblue;
+    
+  }
+  .game-data{
+    background-color: dodgerblue;
+    flex-flow: column;
+    margin: 1em 1em 1em 1em;
+  }
+
+  .game-cover{
+    margin: 1em 1em 1em 1em;
+  }
   
   .home-banner {
     display: flex;
@@ -24,10 +39,7 @@
    body{
        background-color: rgba(14, 31, 107, 0.644);
    }
-.game-data{
-    background-color: dodgerblue;
-  
-}
+
   
   .login-div{
       display: inline-block;
