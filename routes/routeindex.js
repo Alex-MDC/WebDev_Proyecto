@@ -104,14 +104,23 @@ var bearerKey = "Bearer xxx"
     //Implementar logica
     console.log(req.body)
     var user = new User(req.body)
-    user.password = await bcrypt.hashSync(user.password, 10)
-    await user.save()
-    res.redirect('/login')
+    const usercheck = await User.findOne({email: user.email})
+    if (!usercheck){
+      user.password = await bcrypt.hashSync(user.password, 10)
+      await user.save()
+      res.redirect('/login')
+    }
+    else{
+      /*SOLO INVENTE EL NUMERO DE ERROR, NI IDEA SI ESE SEA */
+      return res.status(400).send("The user exist")
+    }
     
     });
 
   //
   router.post('/login', async function(req,res){
+    
+    try{
     console.log(req.body)
     var {email,password} = req.body
     
@@ -143,6 +152,9 @@ var bearerKey = "Bearer xxx"
      }
    
     }
+  } catch(error){
+    console.log(error)
+  }
   });
   //
   

@@ -8,8 +8,10 @@ const cookieParser = require('cookie-parser');
 const app = express();
 
 // connection to db
+const uri = "mongodb+srv://m001-student:m001-mongodb-basics@sandbox.tt1yx.mongodb.net/Web?retryWrites=true&w=majority";
 
-mongoose.connect('mongodb://localhost/VideoGameProject')
+
+mongoose.connect(uri)
     .then(db => console.log('db connected'))
     .catch(err => console.log(err));
 
