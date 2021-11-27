@@ -15,9 +15,9 @@ router.get('/logout', async function(req,res) {
   res.clearCookie("token")
   res.redirect("/")
   });
-//TURN THE VALUES INTO XXX BEFORE UPLOADING
-var clientIDkey = "8xmlvh16op42w7i239g2aimpfxj0av"
-var bearerKey = "Bearer i4kb6g0xsmkvicxrwnhg71xvxkuv4m"
+  //TURN THE VALUES INTO XXX BEFORE UPLOADING----------------------
+var clientIDkey = "xxx" 
+var bearerKey = "Bearer xxx"
 //!!!!!!!!!--------------------------------------------------------
 
 
@@ -94,63 +94,8 @@ router.get('/',verify, async function(req,res){
     res.render('userpage',{reviews});
    // res.render('userpage');
   })
-  router.get("/gameinfo/:id",verify, async  (req,res) => {
-    
-//!!!!!!!!!
-    var id = parseInt(req.params.id)
-    const queryData = {
-      method: 'POST',
-      url: 'https://api.igdb.com/v4/games',
-      headers: {
-        'Client-ID': clientIDkey,
-        Authorization: bearerKey
-      },
-      data: `fields *; where id = ${id};`     
-    };
-    console.log(queryData)
-    var gameData
-    gameData = (await axios.request(queryData)).data
-    console.log(`Game data: ${gameData[0]}`)
-    console.log(`Game: ${gameData[0].id}` )
-    console.log(`Game name: ${gameData[0].name}` )
-    console.log(`Game rating: ${gameData[0].rating}` )
-    console.log(`User id is: ${req.userId}`)
-    //now we get images from the API
-    var resultsImages
-    var url
-    var rawCoverURL
-    var processedCoverURL
-    
-      const queryImages = {
-        method: 'POST',
-        url: 'https://api.igdb.com/v4/covers',
-        headers: {
-          'Client-ID': clientIDkey,
-          Authorization: bearerKey
-        },
-        data: `f *; where game = ${gameData[0].id} & url != null;` 
-        
-      };
-      //resultsImages.push((await axios.request(queryImages)).data) 
-      //
-      console.log(`found game: ${gameData[0].name}` )
-
-      resultsImages = (await axios.request(queryImages)).data
-     // console.log(`found game url: ${resultsImages[0].url}` )
-      if (typeof(resultsImages[0].url) === 'undefined'){
-        console.log("reassigning undefined url")
-        resultsImages[0].url = "https://i.redd.it/ldbo7yn202m21.jpg"
-
-        console.log(resultsImages[0].url)
-      }
-      rawCoverURL = resultsImages[0].url
-      console.log(rawCoverURL)
-      processedCoverURL = rawCoverURL.replace("t_thumb","t_cover_big");
-     // urlArray.push(resultsImages[0].url)
-     url=processedCoverURL
-  
-    var userName = req.userId
-    res.render('gameinfo', {gameData, url, userName});
+  router.get("/gameinfo",verify, async  (req,res) => {
+    res.render('gameinfo');
   })
   router.get("/findgames",verify, async  (req,res) => {
     var query
