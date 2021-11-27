@@ -18,8 +18,8 @@ router.get('/logout', async function(req,res) {
 
 router.get('/',verify, async function(req,res){
 //TURN THE VALUES INTO XXX BEFORE UPLOADING
-var clientIDkey = "xxx"
-var bearerKey = "Bearer xxx"
+var clientIDkey = "8xmlvh16op42w7i239g2aimpfxj0av"
+var bearerKey = "Bearer i4kb6g0xsmkvicxrwnhg71xvxkuv4m"
 //!!!!!!!!!
 
     const queryGames = {
@@ -104,14 +104,22 @@ var bearerKey = "Bearer xxx"
     //Implementar logica
     console.log(req.body)
     var user = new User(req.body)
-    user.password = await bcrypt.hashSync(user.password, 10)
-    await user.save()
-    res.redirect('/login')
+    const usercheck = await User.findOne({email: user.email})
+    if (!usercheck){
+      user.password = await bcrypt.hashSync(user.password, 10)
+      await user.save()
+      res.redirect('/login')
+    }
+    else{
+      return res.status(400).send("The user exist")
+    }
     
     });
 
   //
   router.post('/login', async function(req,res){
+    
+    try{
     console.log(req.body)
     var {email,password} = req.body
     
@@ -143,6 +151,9 @@ var bearerKey = "Bearer xxx"
      }
    
     }
+  } catch(error){
+    console.log(error)
+  }
   });
   //
   
