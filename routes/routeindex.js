@@ -18,8 +18,8 @@ router.get('/logout', async function(req,res) {
 
 router.get('/',verify, async function(req,res){
 //TURN THE VALUES INTO XXX BEFORE UPLOADING
-var clientIDkey = "8xmlvh16op42w7i239g2aimpfxj0av"
-var bearerKey = "Bearer i4kb6g0xsmkvicxrwnhg71xvxkuv4m"
+var clientIDkey = "xxx"
+var bearerKey = "Bearer xxx"
 //!!!!!!!!!
 
     const queryGames = {
