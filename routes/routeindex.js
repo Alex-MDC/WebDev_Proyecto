@@ -90,8 +90,67 @@ router.get('/',verify, async function(req,res){
     var reviews  = await Reviews.find({user_id: req.userId})
     console.log(reviews) 
 
+    var user = await User.find({email: req.userId} , {email: 1, favoriteGames: 1, _id: 0})
+    var favoritegames = user[0].favoriteGames
 
-    res.render('userpage',{reviews});
+    var gameData = []
+    var resultsImages = []
+    var url = []
+    var rawCoverURL = []
+    var processedCoverURL = []
+    for (var i = 0; i < favoritegames.length; i++){
+      var volatileData
+      var queryData = {
+        method: 'POST',
+        url: 'https://api.igdb.com/v4/games',
+        headers: {
+          'Client-ID': clientIDkey,
+          Authorization: bearerKey
+        },
+        data: `fields *; where id = ${favoritegames[i]};`     
+      };
+      
+      volatileData = (await axios.request(queryData)).data
+      gameData[i] = volatileData[0]
+      
+
+    
+
+      const queryImages = {
+        method: 'POST',
+        url: 'https://api.igdb.com/v4/covers',
+        headers: {
+          'Client-ID': clientIDkey,
+          Authorization: bearerKey
+        },
+        data: `f *; where game = ${favoritegames[i]} & url != null;` 
+        
+      };
+
+      console.log(`found game: ${gameData[i].name}` )
+      
+
+      resultsImages = (await axios.request(queryImages)).data
+     // console.log(`found game url: ${resultsImages[0].url}` )
+      if (typeof(resultsImages[0].url) === 'undefined'){
+        console.log("reassigning undefined url")
+        resultsImages[0].url = "https://i.redd.it/ldbo7yn202m21.jpg"
+
+        console.log(resultsImages[0].url)
+      }
+      console.log(resultsImages[0].url)
+      rawCoverURL = resultsImages[0].url
+
+      processedCoverURL = rawCoverURL.replace("t_thumb","t_cover_big");
+     // urlArray.push(resultsImages[0].url)
+     url[i]=processedCoverURL
+    
+    
+    }
+
+
+
+    res.render('userpage',{reviews, gameData, url, user});
    // res.render('userpage');
   })
   router.get("/gameinfo/:id",verify, async  (req,res) => {
@@ -115,6 +174,7 @@ router.get('/',verify, async function(req,res){
     console.log(`Game name: ${gameData[0].name}` )
     console.log(`Game rating: ${gameData[0].rating}` )
     console.log(`User id is: ${req.userId}`)
+    
     //now we get images from the API
     var resultsImages
     var url
@@ -253,6 +313,30 @@ router.get('/',verify, async function(req,res){
 
     });
 
+    router.post('/deleteFav/:id',verify, async (req, res, next) => {
+
+      var id = parseInt(req.params.id)
+      console.log(`Game id is: ${id}`)
+      var userName = req.userId
+  
+      //NOTA: Por el momento y diseno, los users repetidos pueden causar comportamientos
+      //extra~os, entonces se recomienda que para login se haga un failsafe al hacer nuevos
+      //y el nombre ya existe: es decir, no dejar crear cuentas con emails en la DB
+  
+      var user = await User.findOne({email: userName})
+      console.log(`${userName}'s favs: ${user.favoriteGames}`)
+      //luego habilitar un findOne que revise si ya existe el ID para no meterlo
+      var index = user.favoriteGames.indexOf(id);
+      if (index !== -1) {
+        user.favoriteGames.splice(index, 1);
+      }
+      console.log(user.favoriteGames)
+      await user.save()
+      console.log(`${userName}'s favs: ${user.favoriteGames}`)
+      //res.redirect('findgames', {query,resultsAPI,urlArray,userName});
+      res.redirect('/userpage')
+  
+      });
  //make the way for users to add to game to corresponding array of gameID
 
 

@@ -32,7 +32,7 @@
 <!-- seccion con la info del usuario
     apoyarse del API-->
     <div class="user-info">
-        <p>Username
+        <p><%= user[0].email%>
         </p>
     </div>
 <!-- seccion con los juegos favoritos del usuario
@@ -40,7 +40,30 @@
 <div class="game-section">
     <h1>Favorite Games
     </h1>
-    <!-- aqui se hace el appending del api-->
+    <div class="game-section" id="search-results">
+        <% for (var i= 0;i < gameData.length; i++) { %>
+            <tr>
+
+            <div class="top-rated-game">
+                <h2 class="Game-name"> <%= gameData[i].name %> </h2>
+                <h3 class="Game-ID"> ID: <%= gameData[i].id %> </h2>
+                    <a href="/gameinfo/<%= gameData[i].id%>"> <img class = "Game-image" src= <%= url[i] %>  > </a>
+                <td>
+                    <form action="/deleteFav/<%= gameData[i].id%>" method="post">
+                    <button class="btn-add" type="submit">
+                    Delete from favorites
+                    </button>
+                    </form>
+                </td>
+                
+                
+                
+            </div>
+
+        </tr>
+        
+        <% } %>
+    </div>
     <p hidden>
         <a href="/gameinfo">  Game Info  </a> 
     </p>
