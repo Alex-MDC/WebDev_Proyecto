@@ -356,7 +356,7 @@ router.get('/',verify, async function(req,res){
     }
     else{
       /*SOLO INVENTE EL NUMERO DE ERROR, NI IDEA SI ESE SEA */
-      return res.status(400).send("The user exist")
+      return res.status(400).send("The user already exists exist")
     }
     
     });

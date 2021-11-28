@@ -30,8 +30,13 @@
    }
 .game-section{
     background-color: dodgerblue;
+    display: flex;
+  flex-flow: row wrap;
+  justify-content:space-evenly;
+  gap: 80px 80px;
   
 }
+
   
   .login-div{
       display: inline-block;
