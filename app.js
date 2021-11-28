@@ -9,7 +9,8 @@ const app = express();
 
 // connection to db
 const uri = "mongodb+srv://m001-student:m001-mongodb-basics@sandbox.tt1yx.mongodb.net/Web?retryWrites=true&w=majority";
-
+//
+const local ="mongodb://localhost/VideoGameProject"
 
 mongoose.connect(uri)
     .then(db => console.log('db connected'))
