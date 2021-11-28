@@ -48,9 +48,16 @@
           <!-- -->
           <div class="top-rated-game">
             <h2 class="Game-name"> <%= resultsAPI[i].name %> </h2>
-            
-            <a href="/gameinfo/<%= resultsAPI[i].id%>"> <img class = "Game-image" src= <%= urlArray[i] %>  > </a>
             <h3 class="Game-ID"> ID: <%= resultsAPI[i].id %> </h2>
+            <a href="/gameinfo/<%= resultsAPI[i].id%>"> <img class = "Game-image" src= <%= urlArray[i] %>  > </a>
+            <td>
+                <form action="/saveFav/<%= resultsAPI[i].id%>" method="post">
+                   <button class="btn-add" type="submit">
+                   Add to favorites
+                   </button>
+                  </form>
+            </td>
+            
             
             
           </div>

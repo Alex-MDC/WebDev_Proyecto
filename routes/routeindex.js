@@ -16,8 +16,8 @@ router.get('/logout', async function(req,res) {
   res.redirect("/")
   });
 //TURN THE VALUES INTO XXX BEFORE UPLOADING
-var clientIDkey = "XXX"
-var bearerKey = "XXX"
+var clientIDkey = "xxx"
+var bearerKey = "Bearer xxx"
 //!!!!!!!!!--------------------------------------------------------
 
 
@@ -223,6 +223,36 @@ router.get('/',verify, async function(req,res){
     res.render('findgames', {query,resultsAPI,urlArray,userName});
   })
   
+  router.post('/saveFav/:id',verify, async (req, res, next) => {
+
+    /*
+    var id  = req.params.id
+    var task = await Task.findById(id)
+    task.status = !task.status
+    await task.save()
+    res.redirect('/')
+    */
+    //stuff from skeleton above
+    //my stuff
+    var id = parseInt(req.params.id)
+    console.log(`Game id is: ${id}`)
+    var userName = req.userId
+
+    //NOTA: Por el momento y diseno, los users repetidos pueden causar comportamientos
+    //extra~os, entonces se recomienda que para login se haga un failsafe al hacer nuevos
+    //y el nombre ya existe: es decir, no dejar crear cuentas con emails en la DB
+
+    var user = await User.findOne({email: userName})
+    console.log(`${userName}'s favs: ${user.favoriteGames}`)
+    //luego habilitar un findOne que revise si ya existe el ID para no meterlo
+    user.favoriteGames.push(id)
+    await user.save()
+    console.log(`${userName}'s favs: ${user.favoriteGames}`)
+    //res.redirect('findgames', {query,resultsAPI,urlArray,userName});
+    res.redirect('/findgames')
+
+    });
+
  //make the way for users to add to game to corresponding array of gameID
 
 
