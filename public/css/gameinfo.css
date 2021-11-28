@@ -1,45 +1,58 @@
 * {
-    box-sizing: border-box;
-  }
+  box-sizing: border-box;
+}
 
-  
-  .home-banner {
-    display: flex;
-    flex-flow: column wrap;
-    justify-content: space-around;
-    height: 150px;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    
-  }
-  .logo {
-    display: flex;
-   }
-   .btn-login{
-       display: flex;
-       margin: 50px;
-   }
-   body{
-       background-color: rgba(14, 31, 107, 0.644);
-   }
-.game-data{
-    background-color: dodgerblue;
+.container{
+  display: flex;
+  flex-flow: row;
+  background-color: dodgerblue;
   
 }
+.game-data{
+  background-color: dodgerblue;
+  flex-flow: column;
+  margin: 1em 1em 1em 1em;
+}
+
+.game-cover{
+  margin: 1em 1em 1em 1em;
+}
+
+.home-banner {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-around;
+  height: 150px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   
-  .login-div{
-      display: inline-block;
-  }
+}
+.logo {
+  display: flex;
+ }
+ .btn-login{
+     display: flex;
+     margin: 50px;
+ }
+ body{
+     background-color: rgba(14, 31, 107, 0.644);
+ }
+
+
+.login-div{
+    display: inline-block;
+}
 .game-name{
-    background-color: rgb(255, 30, 30);
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: 50px;
-    padding-left: 1em;
+  background-color: rgb(255, 30, 30);
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 50px;
+  padding-left: 1em;
 }
 
 .navbar{
+
   display: flex;
   flex-flow: row;
   justify-content: space-between;
@@ -47,35 +60,35 @@
 }
 
 .menu {
-  visibility: visible;
-  display: flex;
-  justify-content: space-around;
-  color: white;
-  margin: 1em 0 1em 0;
-  list-style-type: none;  
-  flex-grow: 0.2;
+visibility: visible;
+display: flex;
+justify-content: space-around;
+color: white;
+margin: 1em 0 1em 0;
+list-style-type: none;  
+flex-grow: 0.2;
 }
 
 nav{
-  background-color: rgb(17, 17, 17);
-  margin-top: 1em;
+background-color: rgb(17, 17, 17);
+margin-top: 1em;
 }
 
 a:active{
-    color: white;
+  color: white;
 }
 
 a:visited{
-    color: rgb(155, 151, 151);
+  color: rgb(155, 151, 151);
 }
 
 a:hover{
-    color:rgb(40, 59, 226);
+  color:rgb(40, 59, 226);
 }
 
 .game-section {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content:space-evenly;
-  gap: 80px 80px;
+display: flex;
+flex-flow: row wrap;
+justify-content:space-evenly;
+gap: 80px 80px;
 }

@@ -4,13 +4,15 @@
 <head> 
     <meta charset="UTF-8">
     <title>My VideoGame List</title>
-    
+    <!---
     <link rel="stylesheet" type="text/css" href="css/gameinfo.css">
+    --> 
+    <link href="../css/gameinfo.css" rel="stylesheet" type="text/css">
     
 </head>
 <body>
 <div class="home-banner">
-    <div class="logo"><img src="images/Controller_image.png"></div>
+    <div class="logo"><img src="../images/Controller_image.png"></div>
     <header> <h1>My VideoGame List </h1>
     </header>
     <div class="login-div">
@@ -33,39 +35,60 @@
 <!-- seccion con la info del usuario
     apoyarse del API-->
     <div class="game-name">
-        <p>Game Name
+        <p> 
+            <%= gameData[0].name %> 
         </p>
     </div>
 <!-- seccion con la informacion del juego-->
-<div class="game-data">
-    <!-- nombre del parametro-->
-    <h1>Genre
-    </h1>
-    <!-- valor del parametro del api-->
-        <p>
-            Genre for the Game
-        </p>
-    <!-- nombre del parametro-->
-    <h1>Rating
-    </h1>
-    <!-- valor del parametro del api-->
-        <p>
-            Rating for the Game
-        </p>
-    <!-- nombre del parametro-->
-    <h1>Description
-    </h1>
-    <!-- valor del parametro del api-->
-        <p>
-            Description for the Game
-        </p>
 
-
-        <footer class ="page-footer">
-            <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-          
+<div class="container">
+    <div class="game-cover">
+         <!-- nombre del parametro-->
+        <!-- valor del parametro del api-->
             
-          <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-            
+        <img class = "Game-image" src= <%= url %> >
+    
+    </div>
+    <div class="game-data">
+       
+        <!-- nombre del parametro-->
+        <h1>Rating
+        </h1>
+        <!-- valor del parametro del api-->
+            <% if (gameData[0].rating == undefined) { %>
+                <p>
+                    Rating pending. 
+                </p>
+                
+            <% } else { %>
+                <p>
+                    <%= (gameData[0].rating).toFixed(2)  %>
+                </p>
+            <% } %>
+        <!-- nombre del parametro-->
+        <h1>Description
+        </h1>
+        <!-- valor del parametro del api-->
+            <p>
+                <%= gameData[0].summary %>
+            </p>
+                        
+    </div>
 </div>
+
+<footer class ="page-footer">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  
+    
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+                        
+    </div>
+</div>
+
+<footer class ="page-footer">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  
+    
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
