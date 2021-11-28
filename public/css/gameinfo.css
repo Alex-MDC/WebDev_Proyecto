@@ -52,10 +52,11 @@
 }
 
 .navbar{
-display: flex;
-flex-flow: row-reverse;
-justify-content: space-between;
-margin: 0 1em 0.5em 0;
+
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  margin: 0 1em 0.5em 0;
 }
 
 .menu {
