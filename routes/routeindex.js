@@ -420,20 +420,31 @@ router.get('/',verify, async function(req,res){
       });
       router.post('/deleteReview/:id',verify, async (req, res, next) => {
 
+        console.log(`req gamID: ${req.params.id}`)
         var id = parseInt(req.params.id)
         console.log(`Game id is: ${id}`)
         var userName = req.userId
     
         var user = await User.findOne({email: userName})
-        console.log(`${userName}'s favs: ${user.favoriteGames}`)
-        for(var i=0;i<user.reviewList.length;i++){
-          if(user.reviewList[i].gameID == id)
+       // console.log(`${userName}'s reviews: ${user.reviewList}`)
+        var i=0
+        var index = -1
+        for(i ; i< user.reviewList.length ;i++) {
+          if (user.reviewList[i].gameID == id)
           {
-            user.reviewList.splice(i,1);
+            index = i
+            break
           }
         }
+
+       // var index = user.reviewList.indexOf(id)
+        console.log( `Index: ${index}`)
+        if (index != -1) {
+          console.log("deleting review!-----------------")
+          user.reviewList.splice(index, 1);
+        }
         await user.save()
-        console.log(`${userName}'s reviews: ${user.reviewList}`)
+      //  console.log(`${userName}'s reviews: ${user.reviewList}`)
         res.redirect('/userpage')
     
         });
