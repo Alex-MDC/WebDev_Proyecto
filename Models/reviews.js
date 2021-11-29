@@ -12,7 +12,11 @@ var ReviewSchema = Schema ({
     gameID: String,
     user: String,
     date: Date,
-    user_id: String
+    user_id: String,
+    reviewed: {
+        type: Boolean,
+        default: false
+    }
     }
 );
 
