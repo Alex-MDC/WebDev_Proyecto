@@ -64,13 +64,11 @@
             <section>
             <form action="/review/<%= gameData[0].id%>" method="post">
                 <h1>Your Rating</h1>
-                <input class ="form-input" type="number" name="score">
+                <input class ="form-input" type="number" placeholder ="Put from 0-100"name="score">
                 <h1>Your Review</h1>
-                <input class ="form-input" type="text" name="reviewContent">
-                
-                <button class="btn-add" type="submit">
-                Add review 
-                </button>
+                <textarea class ="form-input" name = "reviewContent" cols="80" 
+                placeholder="What are your thoughts on this game?"></textarea>
+                <button class="btn-add" type="submit" value= "<%= exist ? 'Update review' : 'Add review' %>"> Write or update your review</button>
                </form>   
             </section>            
     </div>

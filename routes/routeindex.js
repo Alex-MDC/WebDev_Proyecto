@@ -277,7 +277,20 @@ router.get('/',verify, async function(req,res){
          url=processedCoverURL
       
         var userName = req.userId
-        res.render('review', {gameData, url, userName});
+          //
+          var user = await User.findOne({email: userName})
+          var exist = false;
+          var i= 0
+          for( i ; i < user.reviewList.length; i++){
+             if (user.reviewList[i].gameID  == id){
+              exist = true;
+              break;
+            }
+          }
+          //ya existe un review
+          //
+
+        res.render('review', {gameData, url, userName,exist});
       })
 
 
@@ -451,13 +464,13 @@ router.get('/',verify, async function(req,res){
     const fecha = new Date();
 
     if(!exist){
-    user.reviewList.push({reviewContent : `${review.reviewContent}`, score : `${review.score}`, imageURL: processedCoverURL, gameID: `${id}`, user: userName, date: fecha, user_id:`${user._id}`})
+    user.reviewList.push({reviewContent : `${review.reviewContent}`, score : `${review.score}`, imageURL: processedCoverURL, gameID: `${id}`, user: userName, date: fecha,reviewed:true, user_id:`${user._id}`})
     }else{
-      user.reviewList[i] =  {reviewContent : `${review.reviewContent}`, score : `${review.score}`, imageURL: processedCoverURL, gameID: `${id}`, user: userName, date: fecha, user_id:`${user._id}`}
+      user.reviewList[i] =  {reviewContent : `${review.reviewContent}`, score : `${review.score}`, imageURL: processedCoverURL, gameID: `${id}`, user: userName, date: fecha,reviewed: true, user_id:`${user._id}`}
     }
     //console.log({reviewContent : `${review.reviewContent}`, score : `${review.score}`, imageURL: processedCoverURL, gameID: `${id}`, user: userName, date: fecha, user_id:`${user._id}`})
     await user.save()
-    res.redirect(`/review/${id}`)
+    res.redirect(`/userpage`)
   });
 
 //dynamic routes were causing many bugs
