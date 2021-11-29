@@ -50,37 +50,29 @@
     
     </div>
     <div class="game-data">
-       <h1>THIS IS A GAME REVIEW</h1>
         <!-- nombre del parametro-->
-        <h1>Rating
-        </h1>
+
         <!-- valor del parametro del api-->
-            <% if (gameData[0].rating == undefined) { %>
-                <p>
-                    Rating pending. 
-                </p>
-                
-            <% } else { %>
-                <p>
-                    <%= (gameData[0].rating).toFixed(2)  %>
-                </p>
-            <% } %>
+
         <!-- nombre del parametro-->
-        <h1>Description
-        </h1>
+        <h1>Description</h1>
         <!-- valor del parametro del api-->
             <p>
                 <%= gameData[0].summary %>
 
             </p>
+            <section>
             <form action="/review/<%= gameData[0].id%>" method="post">
-                
-                <input class ="form-input" type="text" name="reviewContent">
+                <h1>Your Rating</h1>
                 <input class ="form-input" type="number" name="score">
+                <h1>Your Review</h1>
+                <input class ="form-input" type="text" name="reviewContent">
+                
                 <button class="btn-add" type="submit">
                 Add review 
                 </button>
-               </form>               
+               </form>   
+            </section>            
     </div>
 </div>
 

@@ -87,12 +87,11 @@ router.get('/',verify, async function(req,res){
     res.render('signup');
   })
   router.get("/userpage",verify, async  (req,res) => {
-    var reviews  = await Reviews.find({user_id: req.userId})
-    console.log(reviews) 
 
-    var user = await User.find({email: req.userId} , {email: 1, favoriteGames: 1, _id: 0})
+
+    var user = await User.find({email: req.userId} , {email: 1, favoriteGames: 1,reviewList: 1, _id: 0})
     var favoritegames = user[0].favoriteGames
-
+    var reviews = user[0].reviewList
     var gameData = []
     var resultsImages = []
     var url = []
@@ -127,7 +126,7 @@ router.get('/',verify, async function(req,res){
         
       };
 
-      console.log(`found game: ${gameData[i].name}` )
+      console.log(`found game: ${gameData[i].name}`)
       
 
       resultsImages = (await axios.request(queryImages)).data
@@ -150,8 +149,7 @@ router.get('/',verify, async function(req,res){
 
 
 
-    res.render('userpage',{reviews, gameData, url, user});
-   // res.render('userpage');
+    res.render('userpage',{reviews,gameData, url, user});
   })
   router.get("/gameinfo/:id",verify, async  (req,res) => {
     
@@ -414,9 +412,27 @@ router.get('/',verify, async function(req,res){
     var user = await User.findOne({email: userName})
     var id = parseInt(req.params.id)
     var review = req.body
+    var reviews = user.reviewList
     var resultsImages
     var rawCoverURL
     var processedCoverURL
+
+    
+    console.log("/******************/")
+    var exist = false;
+    var i= 0
+    for( i ; i < user.reviewList.length; i++){
+      if (user.reviewList[i].gameID  == id){
+        exist = true;
+        break;
+      }
+    }
+    console.log(exist)
+    console.log("/******************/")
+
+    
+
+    
     const queryImages = {
       method: 'POST',
       url: 'https://api.igdb.com/v4/covers',
@@ -432,9 +448,13 @@ router.get('/',verify, async function(req,res){
     resultsImages = (await axios.request(queryImages)).data
     rawCoverURL = resultsImages[0].url
     processedCoverURL = rawCoverURL.replace("t_thumb","t_cover_big");
-
     const fecha = new Date();
+
+    if(!exist){
     user.reviewList.push({reviewContent : `${review.reviewContent}`, score : `${review.score}`, imageURL: processedCoverURL, gameID: `${id}`, user: userName, date: fecha, user_id:`${user._id}`})
+    }else{
+      user.reviewList[i] =  {reviewContent : `${review.reviewContent}`, score : `${review.score}`, imageURL: processedCoverURL, gameID: `${id}`, user: userName, date: fecha, user_id:`${user._id}`}
+    }
     //console.log({reviewContent : `${review.reviewContent}`, score : `${review.score}`, imageURL: processedCoverURL, gameID: `${id}`, user: userName, date: fecha, user_id:`${user._id}`})
     await user.save()
     res.redirect(`/review/${id}`)
