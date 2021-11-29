@@ -6,6 +6,7 @@
     <title>My VideoGame List</title>
     
     <link rel="stylesheet" type="text/css" href="css/userpage.css">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
     
 </head>
 <body>
@@ -37,9 +38,13 @@
     </div>
 <!-- seccion con los juegos favoritos del usuario
     apoyarse del API-->
+    <section>
+        <div>
+            <h1>Favorite Games
+            </h1>
+        </div>
 <div class="game-section">
-    <h1>Favorite Games
-    </h1>
+
     <div class="game-section" id="search-results">
         <% for (var i= 0;i < gameData.length; i++) { %>
             <tr>
@@ -58,22 +63,46 @@
                 </td>
                 
                 
-                
+                <a href="/review/<%= gameData[i].id%>">
+                    <button class="btn-add">
+                        Write a review <%=gameData[i].id%>
+                    </button></a>
             </div>
 
-        </tr>
-        <a href="/review/<%= gameData[i].id%>">
-            <button class="btn-add">
-                Write a review <%=gameData[i].id%>
-            </button></a>
+            </tr>
+        
         <% } %>
     </div>
+</section>
+    <!--PONER ESPACIO PARA QUE SE VEAN MEJOR LAS COSAS-->
+    <section>
+    <div>
+        <h1>GAME REVIEWS</h1>
+    </div>
+    
+    <div class="game-section" id="search-results">
+        <% for (var i= 0;i < reviews.length; i++) { %>
+            <tr>
+
+            <div class="top-rated-game">
+                <h2 class="Game-Score">Score: <%= reviews[i].score%> </h2>
+                <h2 class="Game-name">My review: <%= reviews[i].reviewContent %> </h2>
+                <h3 class="Game-ID"> ID: <%= reviews[i].gameID %> </h2>
+                <img class = "Game-image" src= <%= reviews[i].imageURL%>>
+
+            </div>
+
+            </tr>
+        
+        <% } %>
+    </div>
+
     <p hidden>
         <a href="/gameinfo">  Game Info  </a> 
     </p>
 
 </div>
-
+</section>
 <footer class ="page-footer">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   
