@@ -55,6 +55,10 @@
                     </button>
                     
                     </form>
+                    <a href="/review/<%= gameData[i].id%>">
+                        <button class="btn-add">
+                            Write a review!
+                        </button></a>
                 </td>
                 
                 
@@ -62,10 +66,7 @@
             </div>
 
         </tr>
-        <a href="/review/<%= gameData[i].id%>">
-            <button class="btn-add">
-                Write a review <%=gameData[i].id%>
-            </button></a>
+        
         <% } %>
     </div>
     <p hidden>
