@@ -221,6 +221,77 @@ router.get('/',verify, async function(req,res){
     res.render('findgames', {query,resultsAPI,urlArray,userName});
   })
 
+  router.get("/review/:id",verify, async  (req,res) => {
+    
+    //!!!!!!!!!
+    console.log("entramos")
+        var id = parseInt(req.params.id)
+        const queryData = {
+          method: 'POST',
+          url: 'https://api.igdb.com/v4/games',
+          headers: {
+            'Client-ID': clientIDkey,
+            Authorization: bearerKey
+          },
+          data: `fields *; where id = ${id};`     
+        };
+        console.log(queryData)
+        var gameData
+        gameData = (await axios.request(queryData)).data
+        console.log(`Game data: ${gameData[0]}`)
+        console.log(`Game: ${gameData[0].id}` )
+        console.log(`Game name: ${gameData[0].name}` )
+        console.log(`Game rating: ${gameData[0].rating}` )
+        console.log(`User id is: ${req.userId}`)
+        
+        //now we get images from the API
+        var resultsImages
+        var url
+        var rawCoverURL
+        var processedCoverURL
+        
+          const queryImages = {
+            method: 'POST',
+            url: 'https://api.igdb.com/v4/covers',
+            headers: {
+              'Client-ID': clientIDkey,
+              Authorization: bearerKey
+            },
+            data: `f *; where game = ${gameData[0].id} & url != null;` 
+            
+          };
+          //resultsImages.push((await axios.request(queryImages)).data) 
+          //
+          console.log(`found game: ${gameData[0].name}` )
+    
+          resultsImages = (await axios.request(queryImages)).data
+         // console.log(`found game url: ${resultsImages[0].url}` )
+          if (typeof(resultsImages[0].url) === 'undefined'){
+            console.log("reassigning undefined url")
+            resultsImages[0].url = "https://i.redd.it/ldbo7yn202m21.jpg"
+    
+            console.log(resultsImages[0].url)
+          }
+          rawCoverURL = resultsImages[0].url
+          console.log(rawCoverURL)
+          processedCoverURL = rawCoverURL.replace("t_thumb","t_cover_big");
+         // urlArray.push(resultsImages[0].url)
+         url=processedCoverURL
+      
+        var userName = req.userId
+        res.render('review', {gameData, url, userName});
+      })
+
+
+      router.get("/findgames",verify, async  (req,res) => {
+        var query
+        //res.render('findgames', {query});
+        var resultsAPI =0
+        var urlArray=[]
+        var userName = req.userId
+        res.render('findgames', {query,resultsAPI,urlArray,userName});
+      })
+
   router.post("/searchGames",verify, async  (req,res) => {
     var query
     //hacer queries del API
@@ -338,7 +409,36 @@ router.get('/',verify, async function(req,res){
   
       });
  //make the way for users to add to game to corresponding array of gameID
+  router.post('/review/:id',verify, async (req, res, next) => {
+    var userName = req.userId
+    var user = await User.findOne({email: userName})
+    var id = parseInt(req.params.id)
+    var review = req.body
+    var resultsImages
+    var rawCoverURL
+    var processedCoverURL
+    const queryImages = {
+      method: 'POST',
+      url: 'https://api.igdb.com/v4/covers',
+      headers: {
+        'Client-ID': clientIDkey,
+        Authorization: bearerKey
+      },
+      data: `f *; where game = ${id} & url != null;` 
+      
+    };
+    //resultsImages.push((await axios.request(queryImages)).data) 
+    //
+    resultsImages = (await axios.request(queryImages)).data
+    rawCoverURL = resultsImages[0].url
+    processedCoverURL = rawCoverURL.replace("t_thumb","t_cover_big");
 
+    const fecha = new Date();
+    user.reviewList.push({reviewContent : `${review.reviewContent}`, score : `${review.score}`, imageURL: processedCoverURL, gameID: `${id}`, user: userName, date: fecha, user_id:`${user._id}`})
+    //console.log({reviewContent : `${review.reviewContent}`, score : `${review.score}`, imageURL: processedCoverURL, gameID: `${id}`, user: userName, date: fecha, user_id:`${user._id}`})
+    await user.save()
+    res.redirect(`/review/${id}`)
+  });
 
 //dynamic routes were causing many bugs
 

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head> 
+    <meta charset="UTF-8">
+    <title>My VideoGame List</title>
+    <!---
+    <link rel="stylesheet" type="text/css" href="css/gameinfo.css">
+    --> 
+    <link href="../css/gameinfo.css" rel="stylesheet" type="text/css">
+    
+</head>
+<body>
+<div class="home-banner">
+    <div class="logo"><img src="../images/Controller_image.png"></div>
+    <header> <h1>REVIEW</h1>
+    </header>
+    <div class="login-div">
+        <p>
+        <a href="/login"> <button class="btn-login"> Log Out </button> </a> 
+        </p>
+    </div>
+
+</div>
+
+<nav>
+    <div class="navbar">
+        <ul class="menu">
+            <li> <a href="/userpage">  Profile <br>  </a>  </li>
+            <li> <a href="/">  Home <br> </a>  </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- seccion con la info del usuario
+    apoyarse del API-->
+    <div class="game-name">
+        <p> 
+            <%= gameData[0].name %> 
+        </p>
+    </div>
+<!-- seccion con la informacion del juego-->
+
+<div class="container">
+    <div class="game-cover">
+         <!-- nombre del parametro-->
+        <!-- valor del parametro del api-->
+            
+        <img class = "Game-image" src= <%= url %> >
+    
+    </div>
+    <div class="game-data">
+       <h1>THIS IS A GAME REVIEW</h1>
+        <!-- nombre del parametro-->
+        <h1>Rating
+        </h1>
+        <!-- valor del parametro del api-->
+            <% if (gameData[0].rating == undefined) { %>
+                <p>
+                    Rating pending. 
+                </p>
+                
+            <% } else { %>
+                <p>
+                    <%= (gameData[0].rating).toFixed(2)  %>
+                </p>
+            <% } %>
+        <!-- nombre del parametro-->
+        <h1>Description
+        </h1>
+        <!-- valor del parametro del api-->
+            <p>
+                <%= gameData[0].summary %>
+
+            </p>
+            <form action="/review/<%= gameData[0].id%>" method="post">
+                
+                <input class ="form-input" type="text" name="reviewContent">
+                <input class ="form-input" type="number" name="score">
+                <button class="btn-add" type="submit">
+                Add review 
+                </button>
+               </form>               
+    </div>
+</div>
+
+<footer class ="page-footer">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  
+    
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+                        
+    </div>
+</div>
+
+<footer class ="page-footer">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  
+    
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
