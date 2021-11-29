@@ -91,6 +91,11 @@
                 <p> <%= reviews[i].reviewContent %></p>
                 <h3 hidden class="Game-ID"> ID: <%= reviews[i].gameID %> </h2>
                 <img class = "Game-image" src= <%= reviews[i].imageURL%>>
+                <form action="/deleteReview/<%= gameData[i].id%>" method="post">
+                    <button class="btn-add" type="submit">
+                    Delete review
+                    </button>
+                    </form>
 
             </div>
 
