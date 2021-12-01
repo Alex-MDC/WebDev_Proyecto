@@ -3,19 +3,35 @@
 <!-- header goes on top-->
 <!-- seccion con los juegos mas destacados de lapagina
     apoyarse del API-->
-    
+    <h1>Top rated games </h1> 
 <div class="game-section" id="top-rated">
-    <h1>Top rated games </h1>
+
 
     <% for (var i= 0;i < resultsAPI.length; i++) { %>
         <tr>
-          <!-- -->
+          <div class="col-12 col-sm-6 col-lg-3">
+            <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+              <!-- Team Thumb-->
+              <a href="/gameinfo/<%= resultsAPI[i].id%>"> <div class="advisor_thumb"><img src=<%= urlArray[i] %> alt=""></a>
+                <!-- Social Info-->
+                <div class="actions"><a href="#"><i class="fa fa-trash"></i></a><a href="#"><i class="fa fa-comment"></i></a></div>
+              </div>
+              <!-- Team Details-->
+              <div class="single_advisor_details_info">
+                <h1><%= resultsAPI[i].name %> </h1>
+                <h1>Rating: <%= (resultsAPI[i].rating).toFixed(2) %> </h1>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- 
           <div class="top-rated-game">
             <h2 class="Game-name"> <%= resultsAPI[i].name %> </h2>
             <p class="Game-rating">Rating: <%= (resultsAPI[i].rating).toFixed(2) %>   </p>
             <a href="/gameinfo/<%= resultsAPI[i].id%>"> <img class = "Game-image" src= <%= urlArray[i] %>  > </a>
           </div>
-          <!-- -->
+          -->
       </tr>
     
       <% } %>

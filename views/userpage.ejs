@@ -7,6 +7,7 @@
     
     <link rel="stylesheet" type="text/css" href="css/userpage.css">
     <link href="css/style.css" rel="stylesheet" type="text/css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
     
 </head>
 <body>
@@ -14,18 +15,15 @@
     <div class="logo"><img src="images/Controller_image.png"></div>
     <header> <h1>My VideoGame List </h1>
     </header>
-    <div class="login-div">
-        <p>
-        <a href="/logout"> <button type ="buttun" class="btn-logoff"> Log Out </button> </a> 
-        </p>
-    </div>
 
 </div>
 
 <nav>
     <div class="navbar">
         <ul class="menu">
-            <li><a href="/">  Home <br> </a>  </li>
+            <li><a href="/findgames"> Find games </a> </li>
+            <li> <a href="/">  Home <br> </a>  </li>
+            <li> <a href="/logout"> <button class="btn-login"> Log Out </button> </a> </li>
         </ul>
     </div>
 </nav>
@@ -43,12 +41,35 @@
             <h1>Favorite Games
             </h1>
         </div>
-<div class="game-section">
 
     <div class="game-section" id="search-results">
         <% for (var i= 0;i < gameData.length; i++) { %>
             <tr>
-
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                      <!-- Team Thumb-->
+                      <a href="/gameinfo/<%= gameData[i].id%>"> <div class="advisor_thumb"><img src=<%= url[i] %> alt=""></a>
+                        <!-- Social Info-->
+                        <div class="actions"><a href="#"><i class="fa fa-trash"></i></a><a href="#"><i class="fa fa-comment"></i></a></div>
+                      </div>
+                      <!-- Team Details-->
+                      <div class="single_advisor_details_info">
+                        <h1><%= gameData[i].name %> </h1>
+                        <p> ID: <%= gameData[i].id %></p>
+                        <form action="/deleteFav/<%= gameData[i].id%>" method="post">
+                            <button class="btn-add" type="submit">
+                            Delete from favorites
+                            </button>
+                            
+                            </form>
+                            <a href="/review/<%= gameData[i].id%>">
+                                <button class="btn-add">
+                                    Write a review!
+                                </button></a>
+                      </div>
+                    </div>
+                  </div>
+            <!--
             <div class="top-rated-game">
                 <h2 class="Game-name"> <%= gameData[i].name %> </h2>
                 <h3 class="Game-ID"> ID: <%= gameData[i].id %> </h2>
@@ -67,7 +88,7 @@
                 </td>
                 
             </div>
-         
+            -->
 
         </tr>
 
@@ -81,6 +102,8 @@
         <h1>GAME REVIEWS</h1>
     </div>
     
+
+
     <div class="game-section" id="search-results">
         <% for (var i= 0;i < reviews.length; i++) { %>
             <tr>
@@ -108,13 +131,13 @@
         <a href="/gameinfo">  Game Info  </a> 
     </p>
 
-</div>
+
 </section>
 <footer class ="page-footer">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   
     
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
     
 </body>
 </html>
