@@ -6,17 +6,13 @@
     <title>My VideoGame List</title>
     
     <link rel="stylesheet" type="text/css" href="css/gameinfo.css">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
     
 </head>
 <div class="home-banner">
     <div class="logo"> <a href="/"> <img src="images/Controller_image.png"> </a> </div>
     <header> <h1>My VideoGame List </h1>
     </header>
-    <div class="login-div">
-        <p>
-        <a href="/login"> <button class="btn-login"> Log Out </button> </a> 
-        </p>
-    </div>
 
 </div>
 
@@ -26,6 +22,7 @@
             <li>What are you looking for, <%= userName %> ? </li>
             <li> <a href="/userpage">  Profile <br>  </a>  </li>
             <li> <a href="/">  Home <br> </a>  </li>
+            <a href="/login"> <button class="btn-login"> Log Out </button> </a> 
         </ul>
     </div>
 </nav>
@@ -46,6 +43,29 @@
     <% for (var i= 0;i < resultsAPI.length; i++) { %>
         <tr>
           <!-- -->
+          <div class="col-12 col-sm-6 col-lg-3">
+            <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+              <!-- Team Thumb-->
+              <a href="/gameinfo/<%= resultsAPI[i].id%>"> <div class="advisor_thumb"><img src=<%= urlArray[i] %> alt=""></a>
+
+                <div class="actions"><a href="#"><i class="fa fa-trash"></i></a><a href="#"><i class="fa fa-comment"></i></a></div>
+              </div>
+              <!-- Team Details-->
+              <div class="single_advisor_details_info">
+                <h1><%= resultsAPI[i].name %> </h1>
+                <h1>ID: <%= resultsAPI[i].id %> </h1>
+                <td>
+                    <form action="/saveFav/<%= resultsAPI[i].id%>" method="post">
+                       <button class="btn-add" type="submit">
+                       Add to favorites
+                       </button>
+                      </form>
+                </td>
+              </div>
+              
+            </div>
+          </div>
+          <!--
           <div class="top-rated-game">
             <h2 class="Game-name"> <%= resultsAPI[i].name %> </h2>
             <h3 class="Game-ID"> ID: <%= resultsAPI[i].id %> </h2>
@@ -60,7 +80,7 @@
             
             
             
-          </div>
+          </div>-->
           <!-- -->
       </tr>
     

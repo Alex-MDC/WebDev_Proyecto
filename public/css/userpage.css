@@ -25,14 +25,11 @@
     display: flex;
     margin: 50px;
 }
-   body{
-       background-color: rgba(14, 31, 107, 0.644);
-   }
+
 .game-section{
-    background-color: dodgerblue;
-    display: flex;
-  flex-flow: row wrap;
-  justify-content:space-evenly;
+  display: flex;
+  flex-flow:row wrap;
+  justify-content:space-around;
   gap: 80px 80px;
   
 }
