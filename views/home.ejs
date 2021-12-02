@@ -1,5 +1,7 @@
 <%- include ("./templates/_header") %>
 
+
+<link href="css/style.css" rel="stylesheet" type="text/css">
 <!-- header goes on top-->
 <!-- seccion con los juegos mas destacados de lapagina
     apoyarse del API-->
@@ -17,9 +19,9 @@
                 <div class="actions"><a href="#"><i class="fa fa-trash"></i></a><a href="#"><i class="fa fa-comment"></i></a></div>
               </div>
               <!-- Team Details-->
-              <div class="single_advisor_details_info">
-                <h1><%= resultsAPI[i].name %> </h1>
-                <h1>Rating: <%= (resultsAPI[i].rating).toFixed(2) %> </h1>
+              <div class="single_advisor_details_info"">
+                <h3><%= resultsAPI[i].name %> </h3>
+                <h3>Rating: <%= (resultsAPI[i].rating).toFixed(2) %> </h3>
               </div>
             </div>
           </div>
@@ -38,10 +40,7 @@
     <!-- aqui se hace el appending del api-->
 
 </div>
- <!--
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="server.js"></script>
--->
+
 <footer class ="page-footer">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   

@@ -51,13 +51,7 @@
   padding-left: 1em;
 }
 
-.navbar{
 
-  display: flex;
-  flex-flow: row;
-  justify-content: space-between;
-  margin: 0 1em 0.5em 0;
-}
 
 .menu {
 visibility: visible;
@@ -69,10 +63,6 @@ list-style-type: none;
 flex-grow: 0.2;
 }
 
-nav{
-background-color: rgb(17, 17, 17);
-margin-top: 1em;
-}
 
 a:active{
   color: white;
