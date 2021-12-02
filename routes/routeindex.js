@@ -16,8 +16,8 @@ router.get('/logout', async function(req,res) {
   res.redirect("/")
   });
 //TURN THE VALUES INTO XXX BEFORE UPLOADING
-var clientIDkey = "8xmlvh16op42w7i239g2aimpfxj0av"
-var bearerKey = "Bearer i4kb6g0xsmkvicxrwnhg71xvxkuv4m"
+var clientIDkey = "xxx"
+var bearerKey = "Bearer xxx"
 //!!!!!!!!!--------------------------------------------------------
 
 
@@ -30,7 +30,7 @@ router.get('/',verify, async function(req,res){
         'Client-ID': clientIDkey,
         Authorization: bearerKey
       },
-      data: 'f name,first_release_date,release_dates.date,release_dates.human,rating, rating_count;\n\nwhere rating >= 90 & first_release_date >=1514768461 & rating_count > 100 & first_release_date <= 1609462861;\nsort first_release_date desc;\nlimit 10;\n\n'
+      data: 'f name,first_release_date,release_dates.date,release_dates.human,rating, rating_count;\n\nwhere rating >= 90 & first_release_date >=1514768461 & rating_count > 100 & first_release_date <= 1609462861;\nsort first_release_date desc;\nlimit 11;\n\n'
     };
     var resultsAPI
     resultsAPI = (await axios.request(queryGames)).data
@@ -169,7 +169,7 @@ router.get('/',verify, async function(req,res){
     console.log(`Game name: ${gameData[0].name}` )
     console.log(`Game rating: ${gameData[0].rating}` )
     console.log(`User id is: ${req.userId}`)
-    
+    console.log(`Platforms are : ${gameData[0].platform}`)
     //now we get images from the API
     var resultsImages
     var url
@@ -384,9 +384,24 @@ router.get('/',verify, async function(req,res){
     var user = await User.findOne({email: userName})
     console.log(`${userName}'s favs: ${user.favoriteGames}`)
     //luego habilitar un findOne que revise si ya existe el ID para no meterlo
-    user.favoriteGames.push(id)
-    await user.save()
-    console.log(`${userName}'s favs: ${user.favoriteGames}`)
+    var exist = false;
+    var i= 0
+    for( i ; i < user.favoriteGames.length; i++){
+      console.log(user.favoriteGames[i]) 
+      if (user.favoriteGames[i] == id){
+        exist = true;
+        break;
+      }
+    }
+
+    if (!exist){
+      user.favoriteGames.push(id)
+      await user.save()
+    }else{
+
+    }
+    
+    //console.log(`${userName}'s favs: ${user.favoriteGames}`)
     //res.redirect('findgames', {query,resultsAPI,urlArray,userName});
     res.redirect('/findgames')
 

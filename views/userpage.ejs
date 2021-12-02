@@ -7,7 +7,7 @@
     
     <link rel="stylesheet" type="text/css" href="css/userpage.css">
     <link href="css/style.css" rel="stylesheet" type="text/css">
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     
 </head>
 <body>
@@ -18,15 +18,7 @@
 
 </div>
 
-<nav>
-    <div class="navbar">
-        <ul class="menu">
-            <li><a href="/findgames"> Find games </a> </li>
-            <li> <a href="/">  Home <br> </a>  </li>
-            <li> <a href="/logout"> <button class="btn-login"> Log Out </button> </a> </li>
-        </ul>
-    </div>
-</nav>
+<%- include ("./templates/navbar") %>
 
 <!-- seccion con la info del usuario
     apoyarse del API-->
@@ -50,48 +42,26 @@
                       <!-- Team Thumb-->
                       <a href="/gameinfo/<%= gameData[i].id%>"> <div class="advisor_thumb"><img src=<%= url[i] %> alt=""></a>
                         <!-- Social Info-->
-                        <div class="actions"><a href="#"><i class="fa fa-trash"></i></a><a href="#"><i class="fa fa-comment"></i></a></div>
+                        <div></div>
                       </div>
                       <!-- Team Details-->
                       <div class="single_advisor_details_info">
                         <h1><%= gameData[i].name %> </h1>
-                        <p> ID: <%= gameData[i].id %></p>
                         <form action="/deleteFav/<%= gameData[i].id%>" method="post">
-                            <button class="btn-add" type="submit">
+                            <button class="button primary delete" type="submit">
                             Delete from favorites
                             </button>
                             
                             </form>
                             <a href="/review/<%= gameData[i].id%>">
-                                <button class="btn-add">
+                                <button class="button primary edit">
                                     Write a review!
                                 </button></a>
                       </div>
                     </div>
                   </div>
-            <!--
-            <div class="top-rated-game">
-                <h2 class="Game-name"> <%= gameData[i].name %> </h2>
-                <h3 class="Game-ID"> ID: <%= gameData[i].id %> </h2>
-                    <a href="/gameinfo/<%= gameData[i].id%>"> <img class = "Game-image" src= <%= url[i] %>  > </a>
-                <td>
-                    <form action="/deleteFav/<%= gameData[i].id%>" method="post">
-                    <button class="btn-add" type="submit">
-                    Delete from favorites
-                    </button>
-                    
-                    </form>
-                    <a href="/review/<%= gameData[i].id%>">
-                        <button class="btn-add">
-                            Write a review!
-                        </button></a>
-                </td>
-                
-            </div>
-            -->
-
+        
         </tr>
-
         
         <% } %>
     </div>
@@ -107,7 +77,6 @@
     <div class="game-section" id="search-results">
         <% for (var i= 0;i < reviews.length; i++) { %>
             <tr>
-
             <div class="top-rated-game">
                 <h2 class="Game-Score">Score: <%= reviews[i].score%> </h2>
                 <h2 class="Game-name">My review: </h2>
@@ -115,13 +84,11 @@
                 <h3 hidden class="Game-ID"> ID: <%= reviews[i].gameID %> </h2>
                 <img class = "Game-image" src= <%= reviews[i].imageURL%>>
                 <form action="/deleteReview/<%= reviews[i].gameID%>" method="post">
-                    <button class="btn-add" type="submit">
+                    <button class="button primary delete" type="submit">
                     Delete review
                     </button>
                     </form>
-
             </div>
-
             </tr>
         
         <% } %>

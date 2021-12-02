@@ -16,27 +16,11 @@
 
 </div>
 
-<nav>
-    <div class="navbar">
-        <ul class="menu">
-            <li>What are you looking for, <%= userName %> ? </li>
-            <li> <a href="/userpage">  Profile <br>  </a>  </li>
-            <li> <a href="/">  Home <br> </a>  </li>
-            <a href="/login"> <button class="btn-login"> Log Out </button> </a> 
-        </ul>
-    </div>
-</nav>
+<%- include ("./templates/navbar") %>
 
-<body>
-    <div class="search-container">
-        <form class="form-search" action ="/searchGames" method = "POST">
-            <input class ="form-input" type="search" placeholder="Legend of Zelda" name="search" value="<%= query %>">
-            <button type="submit">Search</button>
-        </form>
-    </div>
+
     
-    
-</body>
+</body >
 <!-- seccion con la informacion de los juegos -->
 <div class="game-section" id="search-results">
 
@@ -52,8 +36,7 @@
               </div>
               <!-- Team Details-->
               <div class="single_advisor_details_info">
-                <h1><%= resultsAPI[i].name %> </h1>
-                <h1>ID: <%= resultsAPI[i].id %> </h1>
+                <h3><%= resultsAPI[i].name %> </h3>
                 <td>
                     <form action="/saveFav/<%= resultsAPI[i].id%>" method="post">
                        <button class="btn-add" type="submit">
