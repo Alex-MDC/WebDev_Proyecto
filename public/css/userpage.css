@@ -39,10 +39,10 @@
       display: inline-block;
   }
 .user-info{
-    background-color: tomato;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    text-align: right;
     font-size: 50px;
-    padding-left: 1em;
+    padding-right: 1em;
 }
 .navbar{
   display: flex;
@@ -77,3 +77,69 @@ a:visited{
 a:hover{
     color:tomato;
 }
+  /**REVIEW CARDS**/
+.reviewSection{
+  display: flex;
+  align-items: center;
+  flex-flow:row wrap;
+  justify-content: center;
+}
+  .container {
+    position: relative;
+    max-width: 700px;
+}
+
+.card {
+    position: relative;
+    border-radius: 1rem;
+    background-color: white;
+    box-shadow: 0px -10px 0px rgb(0, 0, 0);
+    margin-top: 10px;
+    text-align: center;
+
+}
+
+@media(max-width:767px) {
+    .card {
+      position: relative;
+        margin: 1rem 0.7rem 1rem;
+        max-width: 80vw;
+        text-align: center;
+    }
+}
+
+.review-image {
+    width: 6.2rem;
+    border-radius: 5rem;
+    margin: 1.3rem auto 1rem auto
+}
+
+.col-md-4 {
+  position: relative;
+    padding: 0 0.5rem
+}
+
+.card-title {
+    font-size: 1rem;
+    margin-bottom: 0;
+    font-weight: bold;
+    font-family: 'IM Fell French Canon SC'
+}
+
+.card-text {
+    text-align: center;
+    padding: 1rem 2rem;
+    font-size: 0.8rem;
+    color: rgb(82, 81, 81);
+    line-height: 1.4rem
+}
+
+
+
+#name {
+    font-size: 0.8rem;
+    font-weight: bold
+}
+
+
+ /**FIN DE REVIEW CARDS**/

@@ -4,13 +4,13 @@
 <head> 
     <meta charset="UTF-8">
     <title>My VideoGame List</title>
-    
-    
+    <link href="../css/style.css" rel="stylesheet" type="text/css">
+    <link href="../css/gameinfo.css" rel="stylesheet" type="text/css">
     
 </head>
 <body>
 <div class="home-banner">
-    <div class="logo"><img src="../images/Controller_image.png"></div>
+  <div class="logo"> <a href="/"> <img src="../images/Controller_image.png"> </a> </div>
     <header> <h1>REVIEW</h1>
     </header>
 
@@ -80,7 +80,7 @@ body {
   }
 }
     </style>
-    <nav>
+    <nav style="margin-bottom: 1em;">
         <div class="topnav">
             <a href="/">Home</a>
             <a href="/userpage">Profile</a>
@@ -98,51 +98,59 @@ body {
           </div>
     </nav>
     <!--INSERTADA EN ESTE PUNTO PARA QUE EL DISEÑO SEA CONSISTENTE-->
-    <link href="../css/gameinfo.css" rel="stylesheet" type="text/css">
-    <link href="../css/style.css" rel="stylesheet" type="text/css">
 
-<!-- seccion con la info del usuario
-    apoyarse del API-->
-    <div class="game-name">
-        <p> 
-            <%= gameData[0].name %> 
-        </p>
-    </div>
-<!-- seccion con la informacion del juego-->
+<div style="display: flex;Justify-content: center;">
+  <div style="border: 3px 3px 3px 3px;display: flex;
+  flex-flow:column;
+  align-content: center;
+  border-color: black; max-width: 1200px;border-style: solid;
+      border-color: black ; border-radius: 0.25em;">
+    <!-- seccion con la info del usuario apoyarse del API-->
+    <section style="max-width: 1200px; ">
 
-<div class="container">
-    <div class="game-cover">
-         <!-- nombre del parametro-->
-        <!-- valor del parametro del api-->
-            
-        <img class = "Game-image" src= <%= url %> >
-    
-    </div>
-    <div class="game-data">
-        <!-- nombre del parametro-->
+          <p class="game-name" style="border-color: black; border-style: solid; border-width: 0px 0px 2px 0px;"> 
+              <%= gameData[0].name %> 
+          </p>
+    </section>
+    <!-- seccion con la informacion del juego-->
 
-        <!-- valor del parametro del api-->
+    <div class="container" style="background-color: rgba(212, 212, 212, 0.945); margin-top: .65em;">
+        <div class="game-cover">
+            <!-- nombre del parametro-->
+            <!-- valor del parametro del api-->
+                
+            <img class = "Game-image" src= <%= url %> >
+        
+        </div>
+        <div class="game-data" style="border-color: black; border-style: solid; border-width: 0px 0px 0px 2px;">
+            <!-- nombre del parametro-->
 
-        <!-- nombre del parametro-->
-        <h1>Description</h1>
-        <!-- valor del parametro del api-->
-            <p>
-                <%= gameData[0].summary %>
+            <!-- valor del parametro del api-->
 
-            </p>
-            <section>
-            <form action="/review/<%= gameData[0].id%>" method="post">
+            <!-- nombre del parametro-->
+            <h1 style="border-color: black; border-style: solid; border-width: 0px 0px 2px 0px; padding-left: 0.5em;">Description</h1>
+            <!-- valor del parametro del api-->
+                <p style="padding-left: 0.5em;">
+                    <%= gameData[0].summary %>
+
+                </p>
                 <section>
-                <h1>Your Rating</h1>
-                <input class ="form-input" type="number" placeholder ="Put from 0-100"name="score">
-                <h1>Your Review</h1>
-                <textarea class ="form-input" name = "reviewContent" cols="80" 
-                placeholder="What are your thoughts on this game?"></textarea>
-                </section>
-                <button class="button condensed save" type="submit" value= "<%= exist ? 'Update review' : 'Add review' %>"> Write or update your review</button>
-               </form>   
-            </section>            
-    </div>
+                <form action="/review/<%= gameData[0].id%>" method="post">
+                    <div>
+                    <h1 style="border-color: black; border-style: solid; border-width: 0px 0px 2px 0px; padding-left: 0.5em; margin-top: -.25em;">Your Rating</h1>
+                    <input  style="margin-left: 0.5em;" type="number" placeholder ="Put from 0-100" name="score">
+                    </div>
+                    <div >
+                    <h1 style="border-color: black; border-style: solid; border-width: 0px 0px 2px 0px; padding-left: 0.5em;">Your Review</h1>
+                    <textarea style="width: 100%; height: 100%; margin-left: 0.5em; size: 150px;" name = "reviewContent" cols="80" 
+                    placeholder="What are your thoughts on this game?"></textarea>
+                    <button style="margin-left: 0.5em;" class="button condensed save" type="submit" value= "<%= exist ? 'Update review' : 'Add review' %>"> Write or update your review</button>
+                    </div>
+                    
+                  </form>   
+                </section>            
+        </div>
+    </div>    
+  </div>
 </div>
-
 </body>

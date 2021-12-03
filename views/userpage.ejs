@@ -12,7 +12,7 @@
 </head>
 <body>
 <div class="home-banner">
-    <div class="logo"><img src="images/Controller_image.png"></div>
+    <div class="logo"> <a href="/"> <img src="images/Controller_image.png"> </a> </div>
     <header> <h1>My VideoGame List </h1>
     </header>
 
@@ -30,7 +30,7 @@
     apoyarse del API-->
     <section>
         <div>
-            <h1>Favorite Games
+            <h1 class ="tittle" style="font-size: 50px;">Favorite Games
             </h1>
         </div>
 
@@ -67,16 +67,37 @@
     </div>
 </section>
     <!--PONER ESPACIO PARA QUE SE VEAN MEJOR LAS COSAS-->
-    <section>
+    <section >
     <div>
-        <h1>GAME REVIEWS</h1>
+        <h1 class ="tittle" style="font-size: 50px;">Game Reviews</h1>
     </div>
     
 
+    <div class="game-section">
+        <div class="col-12 col-sm-6 col-lg-3">
+            <% for (var i= 0;i < reviews.length; i++) { %>
 
-    <div class="game-section" id="search-results">
-        <% for (var i= 0;i < reviews.length; i++) { %>
-            <tr>
+            
+                <div class = "container">
+                    <div class = "card">
+                        <div class="col-md-4">
+                            <div>
+                                <div class="card-image"> <img class="review-image" src=<%= reviews[i].imageURL%>> 
+                                    <form action="/deleteReview/<%= reviews[i].gameID%>" method="post">
+                                        <button class="button primary delete" type="submit">
+                                        Delete review
+                                        </button>
+                                        </form>
+                                    </div>
+                                <div class="card-text">
+                                    <h1>Score assigned: <%= reviews[i].score%></h1>
+                                    <h1 style="font-size: 14px;"><%= reviews[i].reviewContent %></h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>       
+                </div>
+            <!--   
             <div class="top-rated-game">
                 <h2 class="Game-Score">Score: <%= reviews[i].score%> </h2>
                 <h2 class="Game-name">My review: </h2>
@@ -88,10 +109,10 @@
                     Delete review
                     </button>
                     </form>
-            </div>
-            </tr>
+            </div>-->
         
-        <% } %>
+            <% } %>
+        </div>
     </div>
 
     <p hidden>

@@ -4,12 +4,13 @@
 <head> 
     <meta charset="UTF-8">
     <title>My VideoGame List</title>
-
+    <link href="../css/style.css" rel="stylesheet" type="text/css">
+    <link href="../css/gameinfo.css" rel="stylesheet" type="text/css">
     
 </head>
 <body>
 <div class="home-banner">
-    <div class="logo"><img src="../images/Controller_image.png"></div>
+    <div class="logo"> <a href="/"> <img src="../images/Controller_image.png"> </a> </div>
     <header> <h1>My VideoGame List </h1>
     </header>
 
@@ -24,6 +25,7 @@ body {
 }
 
 .topnav {
+
   overflow: hidden;
   background-color:black;
 }
@@ -80,7 +82,7 @@ body {
   }
 }
     </style>
-    <nav>
+    <nav style="margin-bottom: 1em;">
         <div class="topnav">
             <a href="/">Home</a>
             <a href="/userpage">Profile</a>
@@ -90,7 +92,7 @@ body {
               <div>
               <input class ="form-input" type="text" placeholder="Legend of Zelda" name="search">
               <span>
-              <button type="submit" class="button condensed new">Search</button></span>
+              <button type="submit"  class="button condensed new">Search</button></span>
               </div>
           </form>
         
@@ -98,19 +100,25 @@ body {
           </div>
     </nav>
     <!--INSERTADA EN ESTE PUNTO PARA QUE EL DISEÑO SEA CONSISTENTE-->
-    <link href="../css/gameinfo.css" rel="stylesheet" type="text/css">
+    
 
 
 <!-- seccion con la info del usuario
     apoyarse del API-->
-    <div class="game-name">
-        <p> 
+    <div style="display: flex;Justify-content: center;">
+<div style="border: 3px 3px 3px 3px;display: flex;
+flex-flow:column;
+align-content: center;
+border-color: black; max-width: 1200px;border-style: solid;
+    border-color: black ; border-radius: 0.25em;">
+    <section style="max-width: 1200px; ">
+        <p class="game-name"  style="border-color: black; border-style: solid; border-width: 0px 0px 2px 0px;"> 
             <%= gameData[0].name %> 
         </p>
-    </div>
-<!-- seccion con la informacion del juego-->
+      </section>
+  <!-- seccion con la informacion del juego-->
 
-<div class="container">
+  <div class="container" style="background-color: rgba(212, 212, 212, 0.945); margin-top: .65em;">
     <div class="game-cover">
          <!-- nombre del parametro-->
         <!-- valor del parametro del api-->
@@ -118,46 +126,44 @@ body {
         <img class = "Game-image" src= <%= url %> >
     
     </div>
-    <div class="game-data">
+    <div class="game-data" style="border-color: black; border-style: solid; border-width: 0px 0px 0px 2px;">
        
         <!-- nombre del parametro-->
-        <h1>Rating
+        <h1 style="border-color: black; border-style: solid; border-width: 0px 0px 2px 0px; padding-left: 0.5em;">Rating
         </h1>
         <!-- valor del parametro del api-->
             <% if (gameData[0].rating == undefined) { %>
-                <p>
+                <p style="padding-left: 1em;">
                     Rating pending. 
                 </p>
                 
             <% } else { %>
-                <p>
+                <p style="padding-left: 1em;">
                     <%= (gameData[0].rating).toFixed(2)  %>
                 </p>
             <% } %>
         <!-- nombre del parametro-->
-        <h1>Description
+        <h1 style="border-color: black; border-style: solid; border-width: 0px 0px 2px 0px; padding-left: 0.5em;">Description
         </h1>
         <!-- valor del parametro del api-->
-            <p>
+            <p style="padding-left: 1em;">
                 <%= gameData[0].summary %>
             </p>
                         
+      </div>
     </div>
+  </div>
 </div>
-
 <footer class ="page-footer">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   
     
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</footer>
 </body>
                         
     </div>
 </div>
 
-<footer class ="page-footer">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  
-    
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
 </body>

@@ -5,17 +5,17 @@
 .container{
   display: flex;
   flex-flow: row;
-  background-color: dodgerblue;
-  
+  align-content: center;
+  max-width: 1200px;
 }
 .game-data{
-  background-color: dodgerblue;
   flex-flow: column;
   margin: 1em 1em 1em 1em;
 }
 
 .game-cover{
   margin: 1em 1em 1em 1em;
+
 }
 
 .home-banner {
@@ -37,7 +37,7 @@
      margin: 50px;
  }
  body{
-     background-color: rgba(14, 31, 107, 0.644);
+    background-image: url('https://wallpaperaccess.com/full/750472.jpg');
  }
 
 
@@ -45,10 +45,13 @@
     display: inline-block;
 }
 .game-name{
-  background-color: rgb(255, 30, 30);
+  background-color: rgb(181 181 181);
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   font-size: 50px;
   padding-left: 1em;
+  margin-bottom: -0.2em;
+  margin-top: 0px;
+  border-top: 0px;
 }
 
 
