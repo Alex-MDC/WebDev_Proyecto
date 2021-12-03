@@ -525,15 +525,24 @@ router.get('/',verify, async function(req,res){
     console.log(req.body)
     var user = new User(req.body)
     const usercheck = await User.findOne({email: user.email})
-    if (!usercheck){
-      user.password = await bcrypt.hashSync(user.password, 10)
-      await user.save()
-      res.redirect('/login')
+
+    if (user.password == ""){
+      return res.redirect('/signup')
+      }else{
+
+        if (user.email == ""){
+          return res.redirect('/signup')
+          }
+          else{          
+            if (!usercheck){
+            user.password = await bcrypt.hashSync(user.password, 10)
+            await user.save()
+            res.redirect('/login')
+            /*SOLO INVENTE EL NUMERO DE ERROR, NI IDEA SI ESE SEA */
+          }
+        }
     }
-    else{
-      /*SOLO INVENTE EL NUMERO DE ERROR, NI IDEA SI ESE SEA */
-      return res.status(400).send("The user already exists exist")
-    }
+
     
     });
 
@@ -546,34 +555,37 @@ router.get('/',verify, async function(req,res){
     
     // Validar si el usuario existe
     const user = await User.findOne({email: email})
-
-    if (!user){
-      return res.status(404).send("The user does not exist")
-     
-    }
-    // Si el usuario existe, vamos a generar un token de JWT
-    else {
-     const valid = await bcrypt.compare(password,user.password) 
-   
-   // Si la contraseña es correcta generamos un JWT
-     if (valid) {
-   
-      //en expires in pones la duracion de una sesiion 
-      // m = minutos h = horas
-       const token = jwt.sign({id:user.email, permission: true}, SECRET, {expiresIn: "45m"})
-       console.log(token)
-       res.cookie("token", token, {httpOnly:true})
-       console.log(`User ${user.email} has logged in`)
-       res.redirect("/")
-   
-     }
-   
-     else {
-       console.log("Password is invalid")
-       res.redirect('/login')
-     }
-   
-    }
+     if (email == "" || password == ""){
+      return res.redirect('/login')
+     } else{
+      if (!user){
+        await alert("User/Password Invalid")
+        return res.redirect('/login')
+      
+      }
+      // Si el usuario existe, vamos a generar un token de JWT
+      else {
+      const valid = await bcrypt.compare(password,user.password) 
+    
+    // Si la contraseña es correcta generamos un JWT
+      if (valid) {
+    
+        //en expires in pones la duracion de una sesiion 
+        // m = minutos h = horas
+        const token = jwt.sign({id:user.email, permission: true}, SECRET, {expiresIn: "45m"})
+        console.log(token)
+        res.cookie("token", token, {httpOnly:true})
+        console.log(`User ${user.email} has logged in`)
+        res.redirect("/")
+    
+      }
+    
+      else {
+        console.log("Password is invalid")
+        res.redirect('/login')
+      }
+    
+      }}
   } catch(error){
     console.log(error)
   }
