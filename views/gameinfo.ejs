@@ -82,7 +82,7 @@ body {
   }
 }
     </style>
-    <nav>
+    <nav style="margin-bottom: 1em;">
         <div class="topnav">
             <a href="/">Home</a>
             <a href="/userpage">Profile</a>
@@ -105,14 +105,20 @@ body {
 
 <!-- seccion con la info del usuario
     apoyarse del API-->
-    <section >
-        <p class="game-name" > 
+    <div style="display: flex;Justify-content: center;">
+<div style="border: 3px 3px 3px 3px;display: flex;
+flex-flow:column;
+align-content: center;
+border-color: black; max-width: 1200px;border-style: solid;
+    border-color: black ; border-radius: 0.25em;">
+    <section style="max-width: 1200px; ">
+        <p class="game-name"  style="border-color: black; border-style: solid; border-width: 0px 0px 2px 0px;"> 
             <%= gameData[0].name %> 
         </p>
-    </section>
-<!-- seccion con la informacion del juego-->
+      </section>
+  <!-- seccion con la informacion del juego-->
 
-<div class="container">
+  <div class="container">
     <div class="game-cover">
          <!-- nombre del parametro-->
         <!-- valor del parametro del api-->
@@ -120,33 +126,34 @@ body {
         <img class = "Game-image" src= <%= url %> >
     
     </div>
-    <div class="game-data">
+    <div class="game-data" style="border-color: black; border-style: solid; border-width: 0px 0px 0px 2px;">
        
         <!-- nombre del parametro-->
-        <h1>Rating
+        <h1 style="border-color: black; border-style: solid; border-width: 0px 0px 2px 0px; padding-left: 0.5em;">Rating
         </h1>
         <!-- valor del parametro del api-->
             <% if (gameData[0].rating == undefined) { %>
-                <p>
+                <p style="padding-left: 1em;">
                     Rating pending. 
                 </p>
                 
             <% } else { %>
-                <p>
+                <p style="padding-left: 1em;">
                     <%= (gameData[0].rating).toFixed(2)  %>
                 </p>
             <% } %>
         <!-- nombre del parametro-->
-        <h1>Description
+        <h1 style="border-color: black; border-style: solid; border-width: 0px 0px 2px 0px; padding-left: 0.5em;">Description
         </h1>
         <!-- valor del parametro del api-->
-            <p>
+            <p style="padding-left: 1em;">
                 <%= gameData[0].summary %>
             </p>
                         
+      </div>
     </div>
+  </div>
 </div>
-
 <footer class ="page-footer">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   

@@ -16,8 +16,8 @@ router.get('/logout', async function(req,res) {
   res.redirect("/")
   });
 //TURN THE VALUES INTO XXX BEFORE UPLOADING
-var clientIDkey = "XXX"
-var bearerKey = "Bearer XXX"
+var clientIDkey = "xxx"
+var bearerKey = "Bearer xxx"
 //!!!!!!!!!--------------------------------------------------------
 
 

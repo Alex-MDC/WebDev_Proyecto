@@ -5,17 +5,17 @@
 .container{
   display: flex;
   flex-flow: row;
-  background-color: dodgerblue;
-  
+  align-content: center;
+  max-width: 1200px;
 }
 .game-data{
-  background-color: dodgerblue;
   flex-flow: column;
   margin: 1em 1em 1em 1em;
 }
 
 .game-cover{
   margin: 1em 1em 1em 1em;
+
 }
 
 .home-banner {
@@ -49,7 +49,9 @@
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   font-size: 50px;
   padding-left: 1em;
-  padding-top: -1em;
+  margin-bottom: -0.2em;
+  margin-top: 0px;
+  border-top: 0px;
 }
 
 

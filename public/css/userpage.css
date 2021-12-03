@@ -39,10 +39,10 @@
       display: inline-block;
   }
 .user-info{
-    background-color: tomato;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    text-align: right;
     font-size: 50px;
-    padding-left: 1em;
+    padding-right: 1em;
 }
 .navbar{
   display: flex;
