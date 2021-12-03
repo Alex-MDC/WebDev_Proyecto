@@ -4,7 +4,8 @@
 <head> 
     <meta charset="UTF-8">
     <title>My VideoGame List</title>
-
+    <link href="../css/style.css" rel="stylesheet" type="text/css">
+    <link href="../css/gameinfo.css" rel="stylesheet" type="text/css">
     
 </head>
 <body>
@@ -24,6 +25,7 @@ body {
 }
 
 .topnav {
+
   overflow: hidden;
   background-color:black;
 }
@@ -90,7 +92,7 @@ body {
               <div>
               <input class ="form-input" type="text" placeholder="Legend of Zelda" name="search">
               <span>
-              <button type="submit" class="button condensed new">Search</button></span>
+              <button type="submit"  class="button condensed new">Search</button></span>
               </div>
           </form>
         
@@ -98,16 +100,16 @@ body {
           </div>
     </nav>
     <!--INSERTADA EN ESTE PUNTO PARA QUE EL DISEÑO SEA CONSISTENTE-->
-    <link href="../css/gameinfo.css" rel="stylesheet" type="text/css">
+    
 
 
 <!-- seccion con la info del usuario
     apoyarse del API-->
-    <div class="game-name">
-        <p> 
+    <section >
+        <p class="game-name" > 
             <%= gameData[0].name %> 
         </p>
-    </div>
+    </section>
 <!-- seccion con la informacion del juego-->
 
 <div class="container">
@@ -150,14 +152,11 @@ body {
   
     
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</footer>
 </body>
                         
     </div>
 </div>
 
-<footer class ="page-footer">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  
-    
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
 </body>

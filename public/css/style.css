@@ -2,9 +2,8 @@
     box-sizing: border-box;
   }
 
-  
+  /****BOTONES****/
   .button {
-    font-family:'Open Sans';
     font-size: 16px;
     font-weight:400;
     display:inline-block;
@@ -21,7 +20,6 @@
   
   .primary:hover, .condensed:hover, .touch:hover {
     transform:scale(1.02);
-    box-shadow:2px 2px 5px rgba(0,0,0,0.20), inset 0 0 0 99999px rgba(0,0,0,0.2);
   }
   
   .condensed {
@@ -128,13 +126,24 @@
   .delete:before {
     content: "\f1f8";
   }
+  
   .inlineIcon.delete:before {
       color: rgb(192, 57, 43);
   }
+  /****FIN BOTONES****/
+
+
+
+
   .search-container{
       padding-bottom: 20px;
   }
- 
+
+ .tittle{
+   color: white;
+   text-align: center;
+
+ }
   .home-banner {
       display: flex;
       flex-flow: column wrap;
@@ -160,9 +169,6 @@
      .btn-login{
          display: flex;
          flex-flow: row;
-     }
-     body{
-         background-color: rgba(14, 31, 107, 0.644);
      }
 
   
@@ -213,18 +219,14 @@
       justify-content: center;    
   }
 
-
-
-
   
 body{margin-top:20px;
     margin-bottom:20px;
-
+    background-color: rgba(14, 31, 107, 0.644);
     }
     .single_advisor_profile {
         position: relative;
         margin-bottom: 20px;
-        margin-bottom: 30px;
         -webkit-transition-duration: 500ms;
         transition-duration: 500ms;
         z-index: 1;
@@ -312,7 +314,7 @@ body{margin-top:20px;
         z-index: 1;
         width: 50px;
         height: 3px;
-        background-color: #3f43fd;
+        background-color: #000000;
         content: "";
         top: 12px;
         right: 30px;
